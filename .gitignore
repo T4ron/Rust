@@ -1,0 +1,5 @@
+# Project exclude paths
+/out/
+/Rust.iml
+/.idea/
+/out/
