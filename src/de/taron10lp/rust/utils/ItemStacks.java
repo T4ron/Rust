@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class ItemStacks {
 
     private ArrayList<Material> woodLogTypes = new ArrayList<>();
-    private ArrayList<Material> fiberTypes = new ArrayList<>();
+    private ArrayList<Material> clothTypes = new ArrayList<>();
     private ArrayList<Material> stoneTypes = new ArrayList<>();
     private ArrayList<Material> placableBlocks = new ArrayList<>();
 
@@ -22,9 +22,9 @@ public class ItemStacks {
         addWoodLogTypes(Material.SPRUCE_LOG);
         addWoodLogTypes(Material.CACTUS);
 
-        addFiberTypes(Material.DEAD_BUSH);
-        addFiberTypes(Material.SUGAR_CANE);
-        addFiberTypes(Material.SWEET_BERRY_BUSH);
+        addClothTypes(Material.DEAD_BUSH);
+        addClothTypes(Material.SUGAR_CANE);
+        addClothTypes(Material.SWEET_BERRY_BUSH);
 
         addStoneTypes(Material.STONE);
         addStoneTypes(Material.ANDESITE);
@@ -43,11 +43,11 @@ public class ItemStacks {
         return woodLog;
     }
 
-    public ItemStack getFiber(int amount) {
+    public ItemStack getCloth(int amount) {
         ItemStack fiber = new ItemStack(Material.STRING);
         fiber.setAmount(amount);
         ItemMeta fiberMeta = fiber.getItemMeta();
-        fiberMeta.setDisplayName("Fiber");
+        fiberMeta.setDisplayName("Cloth");
         fiber.setItemMeta(fiberMeta);
 
         return fiber;
@@ -77,8 +77,8 @@ public class ItemStacks {
         woodLogTypes.add(material);
     }
 
-    public ArrayList<Material> getFiberTypes() { return fiberTypes; }
-    public void addFiberTypes(Material material) { fiberTypes.add(material); }
+    public ArrayList<Material> getClothTypes() { return clothTypes; }
+    public void addClothTypes(Material material) { clothTypes.add(material); }
 
     public ArrayList<Material> getStoneTypes() { return stoneTypes; }
     public void addStoneTypes(Material material) { stoneTypes.add(material); }

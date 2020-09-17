@@ -1,17 +1,13 @@
 package de.taron10lp.rust.listener;
 
 import de.taron10lp.rust.main.Rust;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerPickupItemEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class PlayerPickupItemListener implements Listener {
 
@@ -23,22 +19,33 @@ public class PlayerPickupItemListener implements Listener {
 
     @EventHandler
     public void onPlayerPickupItem(PlayerPickupItemEvent event) {
-        Bukkit.broadcastMessage("Item pickuped");
+        if(event.getItem() == null) {
+            return;
+        }
         if(event.getPlayer() == null) {
             return;
         }
         Player player = event.getPlayer();
+        ItemStack itemStack = (ItemStack) event.getItem().getItemStack();
 
-        if(event.getItem() == null) {
+        if(!(event.getItem().getType().equals(EntityType.DROPPED_ITEM))) {
             return;
         }
+        if(itemStack.getType().equals(Material.CACTUS)) {
+            for(int i = 0; i<itemStack.getAmount(); i++) {
+                player.getInventory().addItem(plugin.getItemStacks().getWoodLog(8));
+                event.setCancelled(true);
+                event.getItem().remove();
+            }
+        }
 
-        if(event.getItem().getType().equals(Material.CACTUS)) {
-            event.setCancelled(true);
-            event.getItem().remove();
-            player.getInventory().addItem(plugin.getItemStacks().getWoodLog(8));
+        if(itemStack.getType().equals(Material.SUGAR_CANE)) {
+            for(int i = 0; i<itemStack.getAmount(); i++) {
+                player.getInventory().addItem(plugin.getItemStacks().getCloth(8));
+                event.setCancelled(true);
+                event.getItem().remove();
+            }
         }
 
     }
-
 }

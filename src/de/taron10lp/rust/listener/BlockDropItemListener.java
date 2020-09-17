@@ -26,18 +26,5 @@ public class BlockDropItemListener implements Listener {
         if(event.getItems().isEmpty()) {
             return;
         }
-
-        if(event.getBlock().getType().equals(Material.CACTUS)) {
-            event.setCancelled(true);
-            player.getInventory().addItem(plugin.getItemStacks().getWoodLog(8));
-        }
-
-        if(event.getBlock().getType().equals(Material.SUGAR_CANE)) {
-            Bukkit.broadcastMessage("Hey imma cactus!");
-            event.setCancelled(true);
-            player.getInventory().addItem(plugin.getItemStacks().getFiber(8));
-        }
-
     }
-
 }
