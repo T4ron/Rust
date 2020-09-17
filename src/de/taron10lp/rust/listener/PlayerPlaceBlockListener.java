@@ -1,6 +1,7 @@
 package de.taron10lp.rust.listener;
 
 import de.taron10lp.rust.main.Rust;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,8 +23,14 @@ public class PlayerPlaceBlockListener implements Listener {
         }
         Player player = event.getPlayer();
 
-        if(event.getBlock().getType().equals(Material.CRAFTING_TABLE)) {
+        if(!(player.getGameMode() == GameMode.SURVIVAL)) {
             return;
+        }
+
+        for(Material material : plugin.getItemStacks().getPlacableBlocks()) {
+            if(event.getBlock().getType().equals(material)) {
+                return;
+            }
         }
         event.setCancelled(true);
     }

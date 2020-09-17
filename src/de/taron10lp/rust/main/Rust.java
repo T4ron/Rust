@@ -24,7 +24,6 @@ public class Rust extends JavaPlugin {
         pluginManager.registerEvents(new PlayerBreakBlockListener(this), this);
         pluginManager.registerEvents(new PlayerPlaceBlockListener(this), this);
         pluginManager.registerEvents(new PlayerPickupItemListener(this), this);
-        pluginManager.registerEvents(new ItemDropListener(this), this);
         pluginManager.registerEvents(new BlockDropItemListener(this), this);
         
         itemStacks = new ItemStacks();

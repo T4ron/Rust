@@ -1,4 +1,5 @@
 name: Rust
 version: 1.0
 author: Taron10LP
+api-version: 1.16
 main: de.taron10lp.rust.main.Rust

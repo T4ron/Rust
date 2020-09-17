@@ -1,6 +1,7 @@
 package de.taron10lp.rust.listener;
 
 import de.taron10lp.rust.main.Rust;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
@@ -22,6 +23,7 @@ public class PlayerPickupItemListener implements Listener {
 
     @EventHandler
     public void onPlayerPickupItem(PlayerPickupItemEvent event) {
+        Bukkit.broadcastMessage("Item pickuped");
         if(event.getPlayer() == null) {
             return;
         }
@@ -29,6 +31,12 @@ public class PlayerPickupItemListener implements Listener {
 
         if(event.getItem() == null) {
             return;
+        }
+
+        if(event.getItem().getType().equals(Material.CACTUS)) {
+            event.setCancelled(true);
+            event.getItem().remove();
+            player.getInventory().addItem(plugin.getItemStacks().getWoodLog(8));
         }
 
     }
