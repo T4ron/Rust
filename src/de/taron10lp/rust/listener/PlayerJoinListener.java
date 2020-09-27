@@ -4,7 +4,9 @@ import de.taron10lp.rust.main.Rust;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class PlayerJoinListener implements Listener {
 
@@ -19,6 +21,8 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
 
         event.setJoinMessage(plugin.PREFIX + player.getDisplayName() + " ist gerade dem Server beigetreten");
+
+        player.getInventory().setItem(17, plugin.getItemStacks().getInvCraftingPlaceHolder());
     }
 
 }

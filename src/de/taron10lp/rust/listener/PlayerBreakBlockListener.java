@@ -98,7 +98,10 @@ public class PlayerBreakBlockListener implements Listener {
                     if(event.getBlock().getLocation().subtract(0, 1, 0).getBlock().getType() == Material.FURNACE) {
                         event.setCancelled(true);
                     }
+                    event.setCancelled(true);
                     event.getBlock().getLocation().add(0, 1, 0).getBlock().setType(Material.AIR);
+                    event.getBlock().setType(Material.AIR);
+                    player.getInventory().addItem(plugin.getWorkStations().getFurnace());
                     return;
                 }
             }

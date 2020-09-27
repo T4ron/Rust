@@ -124,13 +124,13 @@ public class ItemStacks {
         return cookedSulfur;
     }
 
-    public ItemStack getInvCraftingItem() {
-        ItemStack invCrafttingItem = new ItemStack(Material.CRAFTING_TABLE);
-        ItemMeta invCrafttingItemMeta = invCrafttingItem.getItemMeta();
-        invCrafttingItemMeta.setDisplayName("Herstellung");
-        invCrafttingItem.setItemMeta(invCrafttingItemMeta);
+    public ItemStack getInvCraftingPlaceHolder() {
+        ItemStack invCrafttingPlaceholder = new ItemStack(Material.CRAFTING_TABLE);
+        ItemMeta invCrafttingPlaceholderMeta = invCrafttingPlaceholder.getItemMeta();
+        invCrafttingPlaceholderMeta.setDisplayName("Herstellung");
+        invCrafttingPlaceholder.setItemMeta(invCrafttingPlaceholderMeta);
 
-        return invCrafttingItem;
+        return invCrafttingPlaceholder;
     }
 
     public ItemStack getStoneSpawner() {

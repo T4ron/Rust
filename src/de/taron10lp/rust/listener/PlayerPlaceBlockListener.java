@@ -43,10 +43,12 @@ public class PlayerPlaceBlockListener implements Listener {
                     if(!(event.getBlock().getLocation().add(0, 1, 0).getBlock().getType() == Material.AIR)) {
                         event.setCancelled(true);
                         player.sendMessage(plugin.PREFIX + "Über dem Ofen darf kein Block sein.");
+                        return;
                     }
                     if(event.getBlock().getLocation().subtract(0, 1, 0).getBlock().getType() == Material.AIR) {
                         event.setCancelled(true);
                         player.sendMessage(plugin.PREFIX + "Du musst den Ofen auf einem Bodem platzieren.");
+                        return;
                     }
                     event.getBlock().getLocation().add(0 , 1, 0).getBlock().setType(Material.POLISHED_ANDESITE);
                 }

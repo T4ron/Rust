@@ -38,10 +38,11 @@ public class InventoryClickListener implements Listener {
             return;
         }
 
-        if(!(event.getCurrentItem().getItemMeta().getDisplayName().equals("Craft"))) {
+        if(!(event.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.getItemStacks().getInvCraftingPlaceHolder().getItemMeta().getDisplayName()))) {
             return;
         }
         event.setCancelled(true);
+        player.sendMessage("Crafting");
     }
 
 }
