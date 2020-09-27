@@ -33,25 +33,18 @@ public class PlayerBreakBlockListener implements Listener {
         }
 
         ItemStack woodLog = plugin.getItemStacks().getWoodLog(8);
-        ItemStack fiber = plugin.getItemStacks().getCloth(8);
+        ItemStack cloth = plugin.getItemStacks().getCloth(8);
         ItemStack stone = plugin.getItemStacks().getStone(8);
+        ItemStack ironOre = plugin.getItemStacks().getIronOre(8);
+        ItemStack sulfurOre = plugin.getItemStacks().getSulfurOre(8);
 
         for(Material material : plugin.getItemStacks().getWoodLogTypes()) {
             if(event.getBlock().getType().equals(material)) {
                 Block targetBlock = event.getBlock();
-                event.setCancelled(true);
                 targetBlock.setType(Material.AIR);
                 Inventory inventory = player.getInventory();
 
                 inventory.addItem(woodLog);
-                Location location = targetBlock.getLocation();
-                BukkitRunnable runnable = new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        location.getBlock().setType(material);
-                    }
-                };
-                runnable.runTaskTimerAsynchronously(plugin, 0 ,20 * 60);
             }
         }
 
@@ -62,15 +55,7 @@ public class PlayerBreakBlockListener implements Listener {
                 targetBlock.setType(Material.AIR);
                 Inventory inventory = player.getInventory();
 
-                inventory.addItem(fiber);
-                Location location = targetBlock.getLocation();
-                BukkitRunnable runnable = new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        location.getBlock().setType(material);
-                    }
-                };
-                runnable.runTaskTimerAsynchronously(plugin, 0 ,20 * 60);
+                inventory.addItem(cloth);
             }
         }
 
@@ -82,14 +67,40 @@ public class PlayerBreakBlockListener implements Listener {
                 Inventory inventory = player.getInventory();
 
                 inventory.addItem(stone);
-                Location location = targetBlock.getLocation();
-                BukkitRunnable runnable = new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        location.getBlock().setType(material);
+            }
+        }
+
+        for(Material material : plugin.getItemStacks().getIronOreTypes()) {
+            if(event.getBlock().getType().equals(material)) {
+                Block targetBlock = event.getBlock();
+                event.setCancelled(true);
+                targetBlock.setType(Material.AIR);
+                Inventory inventory = player.getInventory();
+
+                inventory.addItem(ironOre);
+            }
+        }
+
+        for(Material material : plugin.getItemStacks().getSulfurOreTypes()) {
+            if(event.getBlock().getType().equals(material)) {
+                Block targetBlock = event.getBlock();
+                event.setCancelled(true);
+                targetBlock.setType(Material.AIR);
+                Inventory inventory = player.getInventory();
+
+                inventory.addItem(sulfurOre);
+            }
+        }
+
+        for(Material material : plugin.getItemStacks().getPlacableBlocks()) {
+            if(event.getBlock().getType().equals(material)) {
+                if(material.equals(Material.FURNACE)) {
+                    if(event.getBlock().getLocation().subtract(0, 1, 0).getBlock().getType() == Material.FURNACE) {
+                        event.setCancelled(true);
                     }
-                };
-                runnable.runTaskTimerAsynchronously(plugin, 0 ,20 * 60);
+                    event.getBlock().getLocation().add(0, 1, 0).getBlock().setType(Material.AIR);
+                    return;
+                }
             }
         }
 
