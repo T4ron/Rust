@@ -10,11 +10,11 @@ public class StoneSpawns {
 
     private Rust plugin;
 
-    private ArrayList<Location> stoneSpawnpoints = new ArrayList<>();
-
     public StoneSpawns(Rust plugin) {
         this.plugin = plugin;
     }
+
+    private ArrayList<Location> stoneSpawnpoints = new ArrayList<>();
 
     public ArrayList<Location> getStoneSpawnpoints() { return stoneSpawnpoints; }
     public void addStoneSpawns(Location location) { stoneSpawnpoints.add(location); }

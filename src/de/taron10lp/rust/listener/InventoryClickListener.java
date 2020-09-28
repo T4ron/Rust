@@ -42,7 +42,37 @@ public class InventoryClickListener implements Listener {
             return;
         }
         event.setCancelled(true);
-        player.sendMessage("Crafting");
+        plugin.getInventorys().openSurvCraftingInv(player);
+    }
+
+    @EventHandler
+    public void onInventoryClickPlaceholder(InventoryClickEvent event) {
+        if(!(event.getWhoClicked() instanceof Player)) {
+            return;
+        }
+
+        Player player = (Player) event.getWhoClicked();
+
+        if(event.getClickedInventory() == null) {
+            return;
+        }
+
+        if(event.getCurrentItem() == null) {
+            return;
+        }
+
+        if(event.getCurrentItem().getItemMeta() == null) {
+            return;
+        }
+
+        if(event.getCurrentItem().getItemMeta().getDisplayName() == null) {
+            return;
+        }
+
+        if(!(event.getCurrentItem().getItemMeta().getDisplayName().equals(" "))) {
+            return;
+        }
+        event.setCancelled(true);
     }
 
 }

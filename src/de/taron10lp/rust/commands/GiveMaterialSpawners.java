@@ -29,9 +29,7 @@ public class GiveMaterialSpawners implements CommandExecutor {
                         }
                     } else { player.sendMessage(plugin.PREFIX + "Dieser Befehl benötigt zusätzlich einen Ressourcen Typ."); }
                 } else { player.sendMessage(plugin.PREFIX + "Dieser Befehl benötigt zusätzlich einen Ressourcen Typ."); }
-            } else {
-                player.sendMessage(plugin.PREFIX + "Du hast keine Berechtigung diesen Befehl zu benutzen.");
-            }
+            } else { player.sendMessage(plugin.PREFIX + "Du hast keine Berechtigung diesen Befehl zu benutzen."); }
         }
     return false;
     }

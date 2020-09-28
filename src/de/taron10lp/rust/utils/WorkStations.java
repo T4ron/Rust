@@ -27,4 +27,13 @@ public class WorkStations {
 
         return furnace;
     }
+
+    public ItemStack getGambler() {
+        ItemStack gambler = new ItemStack(Material.GRINDSTONE);
+        ItemMeta gamblerMeta = gambler.getItemMeta();
+        gamblerMeta.setDisplayName("Gambler");
+        gambler.setItemMeta(gamblerMeta);
+
+        return gambler;
+    }
 }

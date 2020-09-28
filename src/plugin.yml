@@ -6,3 +6,5 @@ main: de.taron10lp.rust.main.Rust
 commands:
   givematerialspawner:
   givetools:
+  givematerials:
+  giveworkstations:

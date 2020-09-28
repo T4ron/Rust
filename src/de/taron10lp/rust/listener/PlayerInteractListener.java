@@ -33,4 +33,20 @@ public class PlayerInteractListener implements Listener {
         player.sendMessage("Interacted");
     }
 
+    @EventHandler
+    public void onPlayerClickGambler(PlayerInteractEvent event) {
+        if(event.getPlayer() == null) {
+            return;
+        }
+        Player player = event.getPlayer();
+
+        if(!(event.getAction().equals(Action.RIGHT_CLICK_BLOCK))) {
+            return;
+        }
+        if(!(event.getClickedBlock().getType() == Material.GRINDSTONE)) {
+            return;
+        }
+        event.setCancelled(true);
+        plugin.getInventorys().openGambleInv(player);
+    }
 }

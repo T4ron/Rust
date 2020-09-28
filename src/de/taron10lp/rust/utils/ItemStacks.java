@@ -47,6 +47,7 @@ public class ItemStacks {
         addPlacableBlocks(Material.FURNACE);
     }
 
+    //Ressources
     public ItemStack getWoodLog(int amount) {
         ItemStack woodLog = new ItemStack(Material.OAK_LOG);
         woodLog.setAmount(amount);
@@ -124,15 +125,17 @@ public class ItemStacks {
         return cookedSulfur;
     }
 
-    public ItemStack getInvCraftingPlaceHolder() {
-        ItemStack invCrafttingPlaceholder = new ItemStack(Material.CRAFTING_TABLE);
-        ItemMeta invCrafttingPlaceholderMeta = invCrafttingPlaceholder.getItemMeta();
-        invCrafttingPlaceholderMeta.setDisplayName("Herstellung");
-        invCrafttingPlaceholder.setItemMeta(invCrafttingPlaceholderMeta);
+    public ItemStack getScrap(int amount) {
+        ItemStack scrap = new ItemStack(Material.NETHERITE_SCRAP);
+        scrap.setAmount(amount);
+        ItemMeta scrapMeta = scrap.getItemMeta();
+        scrapMeta.setDisplayName("Schrott");
+        scrap.setItemMeta(scrapMeta);
 
-        return invCrafttingPlaceholder;
+        return scrap;
     }
 
+    //Materialspawners
     public ItemStack getStoneSpawner() {
         ItemStack stoneSpawner = new ItemStack(Material.WHITE_WOOL);
         ItemMeta stoneSpawnerMeta = stoneSpawner.getItemMeta();
@@ -142,6 +145,84 @@ public class ItemStacks {
         return stoneSpawner;
     }
 
+    //Utils
+    public ItemStack getPlaceHolder() {
+        ItemStack placeholder = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        ItemMeta placeholderMeta = placeholder.getItemMeta();
+        placeholderMeta.setDisplayName(" ");
+        placeholder.setItemMeta(placeholderMeta);
+
+        return placeholder;
+    }
+    public ItemStack getInvCraftingPlaceHolder() {
+        ItemStack invCrafttingPlaceholder = new ItemStack(Material.CRAFTING_TABLE);
+        ItemMeta invCrafttingPlaceholderMeta = invCrafttingPlaceholder.getItemMeta();
+        invCrafttingPlaceholderMeta.setDisplayName("Herstellung");
+        invCrafttingPlaceholder.setItemMeta(invCrafttingPlaceholderMeta);
+
+        return invCrafttingPlaceholder;
+    }
+    public ItemStack getSlotBlock() {
+        ItemStack slotBlock = new ItemStack(Material.BARRIER);
+        ItemMeta slotBlockMeta = slotBlock.getItemMeta();
+        slotBlockMeta.setDisplayName("Slot blockiert");
+        slotBlock.setItemMeta(slotBlockMeta);
+
+        return slotBlock;
+    }
+
+    //Gambler
+    public ItemStack get1x() {
+        ItemStack gamble1x = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
+        ItemMeta gamble1xMeta = gamble1x.getItemMeta();
+        gamble1xMeta.setDisplayName("Reward: 1x");
+        gamble1x.setItemMeta(gamble1xMeta);
+
+        return gamble1x;
+    }
+    public ItemStack get3x() {
+        ItemStack gamble3x = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
+        ItemMeta gamble3xMeta = gamble3x.getItemMeta();
+        gamble3xMeta.setDisplayName("Reward: 1x");
+        gamble3x.setItemMeta(gamble3xMeta);
+
+        return gamble3x;
+    }
+    public ItemStack get5x() {
+        ItemStack gamble5x = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);
+        ItemMeta gamble5xMeta = gamble5x.getItemMeta();
+        gamble5xMeta.setDisplayName("Reward: 1x");
+        gamble5x.setItemMeta(gamble5xMeta);
+
+        return gamble5x;
+    }
+    public ItemStack get10x() {
+        ItemStack gamble10x = new ItemStack(Material.PURPLE_STAINED_GLASS_PANE);
+        ItemMeta gamble10xMeta = gamble10x.getItemMeta();
+        gamble10xMeta.setDisplayName("Reward: 1x");
+        gamble10x.setItemMeta(gamble10xMeta);
+
+        return gamble10x;
+    }
+    public ItemStack get20x() {
+        ItemStack gamble20x = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+        ItemMeta gamble20xMeta = gamble20x.getItemMeta();
+        gamble20xMeta.setDisplayName("Reward: 1x");
+        gamble20x.setItemMeta(gamble20xMeta);
+
+        return gamble20x;
+    }
+    public ItemStack getStartGamble() {
+        ItemStack startGamble = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
+        ItemMeta startGambleMeta = startGamble.getItemMeta();
+        startGambleMeta.setDisplayName("Starte Glücksrad");
+        startGamble.setItemMeta(startGambleMeta);
+
+        return startGamble;
+    }
+
+
+    //ArrayLists
     public ArrayList<Material> getWoodLogTypes() { return woodLogTypes; }
     public void addWoodLogTypes(Material material) {
         woodLogTypes.add(material);

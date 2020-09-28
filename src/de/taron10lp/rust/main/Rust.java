@@ -1,12 +1,11 @@
 package de.taron10lp.rust.main;
 
 import de.taron10lp.rust.commands.GiveMaterialSpawners;
+import de.taron10lp.rust.commands.GiveMaterials;
 import de.taron10lp.rust.commands.GiveTools;
+import de.taron10lp.rust.commands.GiveWorkStations;
 import de.taron10lp.rust.listener.*;
-import de.taron10lp.rust.utils.ItemStacks;
-import de.taron10lp.rust.utils.StoneSpawns;
-import de.taron10lp.rust.utils.Tools;
-import de.taron10lp.rust.utils.WorkStations;
+import de.taron10lp.rust.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,6 +18,7 @@ public class Rust extends JavaPlugin {
     private StoneSpawns stoneSpawns;
     private WorkStations workStations;
     private Tools tools;
+    private Inventorys inventorys;
 
     @Override
     public void onEnable() {
@@ -26,6 +26,8 @@ public class Rust extends JavaPlugin {
 
         this.getCommand("givematerialspawner").setExecutor(new GiveMaterialSpawners(this));
         this.getCommand("givetools").setExecutor(new GiveTools(this));
+        this.getCommand("givematerials").setExecutor(new GiveMaterials(this));
+        this.getCommand("giveworkstations").setExecutor(new GiveWorkStations(this));
     }
 
     private void initialize(PluginManager pluginManager) {
@@ -41,9 +43,10 @@ public class Rust extends JavaPlugin {
         pluginManager.registerEvents(new InventoryClickListener(this), this);
 
         itemStacks = new ItemStacks();
-        //stoneSpawns = new StoneSpawns();
+        stoneSpawns = new StoneSpawns(this);
         workStations = new WorkStations();
         tools = new Tools();
+        inventorys = new Inventorys(this);
     }
 
     public ItemStacks getItemStacks() {
@@ -61,4 +64,7 @@ public class Rust extends JavaPlugin {
 
     public Tools getTools() { return tools; }
     public void setTools(Tools tools) { this.tools = tools; }
+
+    public Inventorys getInventorys() { return inventorys; }
+    public void setInventorys(Inventorys inventorys) { this.inventorys = inventorys; }
 }
