@@ -35,6 +35,8 @@ public class Rust extends JavaPlugin {
         initialize(Bukkit.getPluginManager());
 
         createGamblerConfig();
+        getConfig().set("ressources.respawntimer", 20*(60*5));
+        saveConfig();
     }
 
     private void initialize(PluginManager pluginManager) {

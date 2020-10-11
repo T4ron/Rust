@@ -13,6 +13,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Random;
+
 public class PlayerBreakBlockListener implements Listener {
 
     private Rust plugin;
@@ -76,6 +78,13 @@ public class PlayerBreakBlockListener implements Listener {
                 event.setCancelled(true);
                 targetBlock.setType(Material.AIR);
                 Inventory inventory = player.getInventory();
+
+                Random r = new Random();
+                int low = 1,
+                    high = 5;
+                int result = r.nextInt(high-low) + low;
+
+                if(result == 5) { inventory.addItem(plugin.getItemStacks().gethqmOre(1)); }
 
                 inventory.addItem(ironOre);
             }

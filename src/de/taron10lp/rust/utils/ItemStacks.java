@@ -52,7 +52,7 @@ public class ItemStacks {
         ItemStack woodLog = new ItemStack(Material.OAK_LOG);
         woodLog.setAmount(amount);
         ItemMeta woodLogMeta = woodLog.getItemMeta();
-        woodLogMeta.setDisplayName("Holz");
+        woodLogMeta.setDisplayName("Wood");
         woodLog.setItemMeta(woodLogMeta);
 
         return woodLog;
@@ -61,7 +61,7 @@ public class ItemStacks {
         ItemStack charcoal = new ItemStack(Material.CHARCOAL);
         charcoal.setAmount(amount);
         ItemMeta charcoalMeta = charcoal.getItemMeta();
-        charcoalMeta.setDisplayName("Holzkohle");
+        charcoalMeta.setDisplayName("Charcoal");
         charcoal.setItemMeta(charcoalMeta);
 
         return charcoal;
@@ -71,7 +71,7 @@ public class ItemStacks {
         ItemStack fiber = new ItemStack(Material.PAPER);
         fiber.setAmount(amount);
         ItemMeta fiberMeta = fiber.getItemMeta();
-        fiberMeta.setDisplayName("Stoff");
+        fiberMeta.setDisplayName("Cloth");
         fiber.setItemMeta(fiberMeta);
 
         return fiber;
@@ -81,7 +81,7 @@ public class ItemStacks {
         ItemStack stone = new ItemStack(Material.STONE);
         stone.setAmount(amount);
         ItemMeta stoneMeta = stone.getItemMeta();
-        stoneMeta.setDisplayName("Stein");
+        stoneMeta.setDisplayName("Stone");
         stone.setItemMeta(stoneMeta);
 
         return stone;
@@ -91,26 +91,45 @@ public class ItemStacks {
         ItemStack ironOre = new ItemStack(Material.IRON_ORE);
         ironOre.setAmount(amount);
         ItemMeta ironOreMeta = ironOre.getItemMeta();
-        ironOreMeta.setDisplayName("Eisenerz");
+        ironOreMeta.setDisplayName("Ironore");
         ironOre.setItemMeta(ironOreMeta);
 
         return ironOre;
     }
     public ItemStack getIronFrags(int amount) {
-        ItemStack ironFrags = new ItemStack(Material.IRON_INGOT);
+        ItemStack ironFrags = new ItemStack(Material.IRON_NUGGET);
         ironFrags.setAmount(amount);
         ItemMeta ironFragsMeta = ironFrags.getItemMeta();
-        ironFragsMeta.setDisplayName("Eisen Fragmente");
+        ironFragsMeta.setDisplayName("Iron Fragments");
         ironFrags.setItemMeta(ironFragsMeta);
 
         return ironFrags;
+    }
+
+    public ItemStack gethqmOre(int amount) {
+        ItemStack hqmOre = new ItemStack(Material.ANCIENT_DEBRIS);
+        hqmOre.setAmount(amount);
+        ItemMeta hqmOreMeta = hqmOre.getItemMeta();
+        hqmOreMeta.setDisplayName("High Quality Metal Ore");
+        hqmOre.setItemMeta(hqmOreMeta);
+
+        return hqmOre;
+    }
+    public ItemStack gethqmIngot(int amount) {
+        ItemStack hqmIngot = new ItemStack(Material.IRON_INGOT);
+        hqmIngot.setAmount(amount);
+        ItemMeta hqmIngotMeta = hqmIngot.getItemMeta();
+        hqmIngotMeta.setDisplayName("High Quality Metal");
+        hqmIngot.setItemMeta(hqmIngotMeta);
+
+        return hqmIngot;
     }
 
     public ItemStack getSulfurOre(int amount) {
         ItemStack sulfurOre = new ItemStack(Material.GOLD_ORE);
         sulfurOre.setAmount(amount);
         ItemMeta sulfurOreMeta = sulfurOre.getItemMeta();
-        sulfurOreMeta.setDisplayName("Sulfurerz");
+        sulfurOreMeta.setDisplayName("Sulfur Ore");
         sulfurOre.setItemMeta(sulfurOreMeta);
 
         return sulfurOre;
@@ -119,7 +138,7 @@ public class ItemStacks {
         ItemStack cookedSulfur = new ItemStack(Material.GOLD_INGOT);
         cookedSulfur.setAmount(amount);
         ItemMeta cookedSulfurMeta = cookedSulfur.getItemMeta();
-        cookedSulfurMeta.setDisplayName("Gekochtes Sulfur");
+        cookedSulfurMeta.setDisplayName("Cooked Sulfur");
         cookedSulfur.setItemMeta(cookedSulfurMeta);
 
         return cookedSulfur;
@@ -129,7 +148,7 @@ public class ItemStacks {
         ItemStack scrap = new ItemStack(Material.NETHERITE_SCRAP);
         scrap.setAmount(amount);
         ItemMeta scrapMeta = scrap.getItemMeta();
-        scrapMeta.setDisplayName("Schrott");
+        scrapMeta.setDisplayName("Scrap");
         scrap.setItemMeta(scrapMeta);
 
         return scrap;
@@ -139,7 +158,7 @@ public class ItemStacks {
     public ItemStack getStoneSpawner() {
         ItemStack stoneSpawner = new ItemStack(Material.WHITE_WOOL);
         ItemMeta stoneSpawnerMeta = stoneSpawner.getItemMeta();
-        stoneSpawnerMeta.setDisplayName("Spawner Material: Stein");
+        stoneSpawnerMeta.setDisplayName("Spawner Material: Stone");
         stoneSpawner.setItemMeta(stoneSpawnerMeta);
 
         return stoneSpawner;
@@ -157,7 +176,7 @@ public class ItemStacks {
     public ItemStack getInvCraftingPlaceHolder() {
         ItemStack invCrafttingPlaceholder = new ItemStack(Material.CRAFTING_TABLE);
         ItemMeta invCrafttingPlaceholderMeta = invCrafttingPlaceholder.getItemMeta();
-        invCrafttingPlaceholderMeta.setDisplayName("Herstellung");
+        invCrafttingPlaceholderMeta.setDisplayName("Crafting");
         invCrafttingPlaceholder.setItemMeta(invCrafttingPlaceholderMeta);
 
         return invCrafttingPlaceholder;
@@ -165,7 +184,7 @@ public class ItemStacks {
     public ItemStack getSlotBlock() {
         ItemStack slotBlock = new ItemStack(Material.BARRIER);
         ItemMeta slotBlockMeta = slotBlock.getItemMeta();
-        slotBlockMeta.setDisplayName("Slot blockiert");
+        slotBlockMeta.setDisplayName("Slot blocked");
         slotBlock.setItemMeta(slotBlockMeta);
 
         return slotBlock;
@@ -183,7 +202,7 @@ public class ItemStacks {
     public ItemStack get3x() {
         ItemStack gamble3x = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
         ItemMeta gamble3xMeta = gamble3x.getItemMeta();
-        gamble3xMeta.setDisplayName("Reward: 1x");
+        gamble3xMeta.setDisplayName("Reward: 3x");
         gamble3x.setItemMeta(gamble3xMeta);
 
         return gamble3x;
@@ -191,7 +210,7 @@ public class ItemStacks {
     public ItemStack get5x() {
         ItemStack gamble5x = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);
         ItemMeta gamble5xMeta = gamble5x.getItemMeta();
-        gamble5xMeta.setDisplayName("Reward: 1x");
+        gamble5xMeta.setDisplayName("Reward: 5x");
         gamble5x.setItemMeta(gamble5xMeta);
 
         return gamble5x;
@@ -199,7 +218,7 @@ public class ItemStacks {
     public ItemStack get10x() {
         ItemStack gamble10x = new ItemStack(Material.PURPLE_STAINED_GLASS_PANE);
         ItemMeta gamble10xMeta = gamble10x.getItemMeta();
-        gamble10xMeta.setDisplayName("Reward: 1x");
+        gamble10xMeta.setDisplayName("Reward: 10x");
         gamble10x.setItemMeta(gamble10xMeta);
 
         return gamble10x;
@@ -207,7 +226,7 @@ public class ItemStacks {
     public ItemStack get20x() {
         ItemStack gamble20x = new ItemStack(Material.RED_STAINED_GLASS_PANE);
         ItemMeta gamble20xMeta = gamble20x.getItemMeta();
-        gamble20xMeta.setDisplayName("Reward: 1x");
+        gamble20xMeta.setDisplayName("Reward: 20x");
         gamble20x.setItemMeta(gamble20xMeta);
 
         return gamble20x;
@@ -215,7 +234,7 @@ public class ItemStacks {
     public ItemStack getStartGamble() {
         ItemStack startGamble = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
         ItemMeta startGambleMeta = startGamble.getItemMeta();
-        startGambleMeta.setDisplayName("Starte Glücksrad");
+        startGambleMeta.setDisplayName("Start Gambling");
         startGamble.setItemMeta(startGambleMeta);
 
         return startGamble;
