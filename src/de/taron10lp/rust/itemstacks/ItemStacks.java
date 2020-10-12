@@ -6,6 +6,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class ItemStacks {
 
+    public ItemStacks() {}
+
     //Utils
     public ItemStack getPlaceHolder() {
         ItemStack placeholder = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);

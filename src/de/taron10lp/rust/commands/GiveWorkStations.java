@@ -27,6 +27,8 @@ public class GiveWorkStations implements CommandExecutor {
                         player.getInventory().addItem(plugin.getWorkStations().getFurnace());
                     } else if(args[0].equalsIgnoreCase("gambler")) {
                         player.getInventory().addItem(plugin.getWorkStations().getGambler());
+                    } else if(args[0].equalsIgnoreCase("recycler")) {
+                        player.getInventory().addItem(plugin.getWorkStations().getRecycler());
                     } else { player.sendMessage(plugin.PREFIX + "Dieser Befehl benötigt zusätzlich einen Workstation Typ."); }
                 } else { player.sendMessage(plugin.PREFIX + "Dieser Befehl benötigt zusätzlich einen Workstation Typ."); }
             } else { player.sendMessage(plugin.PREFIX + "Du hast keine Berechtigung diesen Befehl zu benutzen."); }
