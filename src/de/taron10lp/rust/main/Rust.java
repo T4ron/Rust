@@ -4,9 +4,7 @@ import de.taron10lp.rust.commands.GiveMaterialSpawners;
 import de.taron10lp.rust.commands.GiveMaterials;
 import de.taron10lp.rust.commands.GiveTools;
 import de.taron10lp.rust.commands.GiveWorkStations;
-import de.taron10lp.rust.itemstacks.ItemMaterials;
-import de.taron10lp.rust.itemstacks.Tools;
-import de.taron10lp.rust.itemstacks.WorkStations;
+import de.taron10lp.rust.itemstacks.*;
 import de.taron10lp.rust.listener.*;
 import de.taron10lp.rust.utils.*;
 import org.bukkit.Bukkit;
@@ -27,9 +25,11 @@ public class Rust extends JavaPlugin {
     public final String PREFIX = "§4[§6Rust§4]§7 ";
 
     private ItemMaterials itemMaterials;
+    private ItemStacks itemStacks;
     private WorkStations workStations;
     private Tools tools;
     private Inventorys inventorys;
+    private ItemComponents itemComponents;
 
     //CustomConfigs
     private File gamblerConfigFile;
@@ -63,10 +63,12 @@ public class Rust extends JavaPlugin {
         this.getCommand("givematerials").setExecutor(new GiveMaterials(this));
         this.getCommand("giveworkstations").setExecutor(new GiveWorkStations(this));
 
-        itemMaterials = new ItemMaterials();
-        workStations = new WorkStations();
+        itemMaterials = new ItemMaterials(this);
+        itemStacks = new ItemStacks();
+        workStations = new WorkStations(this);
         tools = new Tools();
         inventorys = new Inventorys(this);
+        itemComponents = new ItemComponents();
     }
 
     //Classes
@@ -77,6 +79,9 @@ public class Rust extends JavaPlugin {
         this.itemMaterials = itemMaterials;
     }
 
+    public ItemStacks getItemStacks() { return itemStacks; }
+    public void setItemStacks(ItemStacks itemStacks) { this.itemStacks = itemStacks; }
+
     public WorkStations getWorkStations() { return workStations; }
     public void setWorkStations(WorkStations workStations) { this.workStations = workStations; }
 
@@ -85,6 +90,9 @@ public class Rust extends JavaPlugin {
 
     public Inventorys getInventorys() { return inventorys; }
     public void setInventorys(Inventorys inventorys) { this.inventorys = inventorys; }
+
+    public ItemComponents getItemComponents() { return itemComponents; }
+    public void setItemComponents(ItemComponents itemComponents) { this.itemComponents = itemComponents; }
 
     //Custom Configs
     public FileConfiguration getGamblerConfig() { return this.gamblerConfig; }
@@ -104,7 +112,6 @@ public class Rust extends JavaPlugin {
     }
 
     //ArrayLists
-
     public ArrayList<Material> getInteractables() { return interactables; }
     public void addInteractable(Material material) {
         interactables.add(material);

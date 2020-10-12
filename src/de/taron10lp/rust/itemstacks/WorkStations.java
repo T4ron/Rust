@@ -15,6 +15,7 @@ public class WorkStations {
         plugin.getInteractables().add(getworkbenchT1().getType());
         plugin.getInteractables().add(getFurnace().getType());
         plugin.getInteractables().add(getGambler().getType());
+        plugin.getInteractables().add(getRecycler().getType());
     }
 
     public ItemStack getworkbenchT1() {
@@ -25,7 +26,6 @@ public class WorkStations {
 
         return workbenchT1;
     }
-
     public ItemStack getFurnace() {
         ItemStack furnace = new ItemStack(Material.FURNACE);
         ItemMeta furnaceMeta = furnace.getItemMeta();
@@ -34,7 +34,6 @@ public class WorkStations {
 
         return furnace;
     }
-
     public ItemStack getGambler() {
         ItemStack gambler = new ItemStack(Material.GRINDSTONE);
         ItemMeta gamblerMeta = gambler.getItemMeta();
@@ -42,5 +41,13 @@ public class WorkStations {
         gambler.setItemMeta(gamblerMeta);
 
         return gambler;
+    }
+    public ItemStack getRecycler() {
+        ItemStack recycler = new ItemStack(Material.SMITHING_TABLE);
+        ItemMeta recyclerMeta = recycler.getItemMeta();
+        recyclerMeta.setDisplayName("Recycler");
+        recycler.setItemMeta(recyclerMeta);
+
+        return recycler;
     }
 }
