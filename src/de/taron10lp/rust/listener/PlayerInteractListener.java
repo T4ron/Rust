@@ -17,36 +17,34 @@ public class PlayerInteractListener implements Listener {
     }
 
     @EventHandler
-    public void onPlayerClickCraftingTable(PlayerInteractEvent event) {
+    public void onPlayerInteract(PlayerInteractEvent event) {
         if(event.getPlayer() == null) {
             return;
         }
         Player player = event.getPlayer();
 
-        if(!(event.getAction().equals(Action.RIGHT_CLICK_BLOCK))) {
+        if(!(plugin.getInteractables().contains(event.getMaterial()))) {
+            event.setCancelled(true);
             return;
         }
-        if(!(event.getClickedBlock().getType() == Material.CRAFTING_TABLE)) {
-            return;
+
+        if(event.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
+            switch(event.getClickedBlock().getType()) {
+                case GRINDSTONE:
+                    event.setCancelled(true);
+                    plugin.getInventorys().openGambleInv(player);
+                    break;
+                case CRAFTING_TABLE:
+                    event.setCancelled(true);
+                    player.sendMessage("Interacted");
+                    break;
+                default:
+                    event.setCancelled(true);
+                    break;
+            }
         }
+
         event.setCancelled(true);
-        player.sendMessage("Interacted");
     }
 
-    @EventHandler
-    public void onPlayerClickGambler(PlayerInteractEvent event) {
-        if(event.getPlayer() == null) {
-            return;
-        }
-        Player player = event.getPlayer();
-
-        if(!(event.getAction().equals(Action.RIGHT_CLICK_BLOCK))) {
-            return;
-        }
-        if(!(event.getClickedBlock().getType() == Material.GRINDSTONE)) {
-            return;
-        }
-        event.setCancelled(true);
-        plugin.getInventorys().openGambleInv(player);
-    }
 }

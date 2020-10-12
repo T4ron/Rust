@@ -38,7 +38,7 @@ public class InventoryClickListener implements Listener {
             return;
         }
 
-        if(!(event.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.getItemStacks().getInvCraftingPlaceHolder().getItemMeta().getDisplayName()))) {
+        if(!(event.getCurrentItem().getItemMeta().getDisplayName().equals(plugin.getItemMaterials().getInvCraftingPlaceHolder().getItemMeta().getDisplayName()))) {
             return;
         }
         event.setCancelled(true);

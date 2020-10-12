@@ -1,4 +1,4 @@
-package de.taron10lp.rust.utils;
+package de.taron10lp.rust.itemstacks;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
