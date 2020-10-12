@@ -1,13 +1,20 @@
-package de.taron10lp.rust.utils;
+package de.taron10lp.rust.itemstacks;
 
+import de.taron10lp.rust.main.Rust;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class WorkStations {
 
-    public WorkStations() {
+    private Rust plugin;
 
+    public WorkStations(Rust plugin) {
+        this.plugin = plugin;
+
+        plugin.getInteractables().add(getworkbenchT1().getType());
+        plugin.getInteractables().add(getFurnace().getType());
+        plugin.getInteractables().add(getGambler().getType());
     }
 
     public ItemStack getworkbenchT1() {

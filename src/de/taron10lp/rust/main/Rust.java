@@ -4,24 +4,29 @@ import de.taron10lp.rust.commands.GiveMaterialSpawners;
 import de.taron10lp.rust.commands.GiveMaterials;
 import de.taron10lp.rust.commands.GiveTools;
 import de.taron10lp.rust.commands.GiveWorkStations;
+import de.taron10lp.rust.itemstacks.ItemMaterials;
+import de.taron10lp.rust.itemstacks.Tools;
+import de.taron10lp.rust.itemstacks.WorkStations;
 import de.taron10lp.rust.listener.*;
 import de.taron10lp.rust.utils.*;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Rust extends JavaPlugin {
 
     public final String PREFIX = "§4[§6Rust§4]§7 ";
 
-    private ItemStacks itemStacks;
-    private StoneSpawns stoneSpawns;
+    private ItemMaterials itemMaterials;
     private WorkStations workStations;
     private Tools tools;
     private Inventorys inventorys;
@@ -29,6 +34,8 @@ public class Rust extends JavaPlugin {
     //CustomConfigs
     private File gamblerConfigFile;
     private FileConfiguration gamblerConfig;
+
+    public ArrayList<Material> interactables = new ArrayList<>();
 
     @Override
     public void onEnable() {
@@ -56,23 +63,19 @@ public class Rust extends JavaPlugin {
         this.getCommand("givematerials").setExecutor(new GiveMaterials(this));
         this.getCommand("giveworkstations").setExecutor(new GiveWorkStations(this));
 
-        itemStacks = new ItemStacks();
-        stoneSpawns = new StoneSpawns(this);
+        itemMaterials = new ItemMaterials();
         workStations = new WorkStations();
         tools = new Tools();
         inventorys = new Inventorys(this);
     }
 
     //Classes
-    public ItemStacks getItemStacks() {
-        return itemStacks;
+    public ItemMaterials getItemMaterials() {
+        return itemMaterials;
     }
-    public void setItemStacks(ItemStacks itemStacks) {
-        this.itemStacks = itemStacks;
+    public void setItemMaterials(ItemMaterials itemMaterials) {
+        this.itemMaterials = itemMaterials;
     }
-
-    public StoneSpawns getStoneSpawns() { return stoneSpawns; }
-    public void setStoneSpawns(StoneSpawns stoneSpawns) { this.stoneSpawns = stoneSpawns; }
 
     public WorkStations getWorkStations() { return workStations; }
     public void setWorkStations(WorkStations workStations) { this.workStations = workStations; }
@@ -98,5 +101,12 @@ public class Rust extends JavaPlugin {
         } catch (IOException | InvalidConfigurationException exception) {
             exception.printStackTrace();
         }
+    }
+
+    //ArrayLists
+
+    public ArrayList<Material> getInteractables() { return interactables; }
+    public void addInteractable(Material material) {
+        interactables.add(material);
     }
 }

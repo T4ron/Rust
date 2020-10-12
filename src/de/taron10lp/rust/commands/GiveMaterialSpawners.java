@@ -24,7 +24,7 @@ public class GiveMaterialSpawners implements CommandExecutor {
                     if(args[0].equalsIgnoreCase("stone")) {
                         switch(args[0]) {
                             case "stone":
-                                player.getInventory().addItem(plugin.getItemStacks().getStoneSpawner());
+                                player.getInventory().addItem(plugin.getItemMaterials().getStoneSpawner());
                                 break;
                         }
                     } else { player.sendMessage(plugin.PREFIX + "Dieser Befehl benötigt zusätzlich einen Ressourcen Typ."); }

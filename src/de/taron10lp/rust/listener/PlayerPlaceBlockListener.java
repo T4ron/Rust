@@ -1,7 +1,6 @@
 package de.taron10lp.rust.listener;
 
 import de.taron10lp.rust.main.Rust;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -24,7 +23,7 @@ public class PlayerPlaceBlockListener implements Listener {
         }
         Player player = event.getPlayer();
 
-        if(event.getItemInHand().getItemMeta().getDisplayName().equals(plugin.getItemStacks().getStoneSpawner().getItemMeta().getDisplayName())) {
+        if(event.getItemInHand().getItemMeta().getDisplayName().equals(plugin.getItemMaterials().getStoneSpawner().getItemMeta().getDisplayName())) {
             if(player.isOp() == true) {
             } else {
                 event.setCancelled(true);
@@ -37,7 +36,7 @@ public class PlayerPlaceBlockListener implements Listener {
             return;
         }
 
-        for(Material material : plugin.getItemStacks().getPlacableBlocks()) {
+        for(Material material : plugin.getItemMaterials().getPlacableBlocks()) {
             if(event.getBlock().getType().equals(material)) {
                 if(material.equals(Material.FURNACE)) {
                     if(!(event.getBlock().getLocation().add(0, 1, 0).getBlock().getType() == Material.AIR)) {

@@ -33,7 +33,7 @@ public class PlayerPickupItemListener implements Listener {
         }
         if(itemStack.getType().equals(Material.CACTUS)) {
             for(int i = 0; i<itemStack.getAmount(); i++) {
-                player.getInventory().addItem(plugin.getItemStacks().getWoodLog(8));
+                player.getInventory().addItem(plugin.getItemMaterials().getWoodLog(8));
                 event.setCancelled(true);
                 event.getItem().remove();
             }
@@ -41,7 +41,7 @@ public class PlayerPickupItemListener implements Listener {
 
         if(itemStack.getType().equals(Material.SUGAR_CANE)) {
             for(int i = 0; i<itemStack.getAmount(); i++) {
-                player.getInventory().addItem(plugin.getItemStacks().getCloth(8));
+                player.getInventory().addItem(plugin.getItemMaterials().getCloth(8));
                 event.setCancelled(true);
                 event.getItem().remove();
             }
