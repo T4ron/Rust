@@ -12,7 +12,6 @@ public class ItemComponents {
 
     public ItemComponents() {}
 
-
     public ItemStack getMetalPipe(int amount) {
         ItemStack metalPipe = new ItemStack(Material.BAMBOO);
         metalPipe.setAmount(amount);
