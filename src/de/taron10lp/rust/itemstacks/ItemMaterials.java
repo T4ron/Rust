@@ -18,8 +18,11 @@ public class ItemMaterials {
     private ArrayList<Material> sulfurOreTypes = new ArrayList<>();
     private ArrayList<Material> placableBlocks = new ArrayList<>();
 
+    private ArrayList<Material> interactables;
+
     public ItemMaterials(Rust plugin) {
         this.plugin = plugin;
+        interactables = plugin.getInteractables();
 
         //wood log
         addWoodLogTypes(Material.OAK_LOG);
@@ -50,24 +53,8 @@ public class ItemMaterials {
         addPlacableBlocks(Material.CRAFTING_TABLE);
         addPlacableBlocks(Material.FURNACE);
 
-        for(int i=1; i<=woodLogTypes.size(); i++) {
-            plugin.getInteractables().add(woodLogTypes.get(i));
-        }
-        for(int i=1; i<=clothTypes.size(); i++) {
-            plugin.getInteractables().add(clothTypes.get(i));
-        }
-        for(int i=1; i<=stoneTypes.size(); i++) {
-            plugin.getInteractables().add(stoneTypes.get(i));
-        }
-        for(int i=1; i<=ironOreTypes.size(); i++) {
-            plugin.getInteractables().add(ironOreTypes.get(i));
-        }for(int i=1; i<=sulfurOreTypes.size(); i++) {
-            plugin.getInteractables().add(sulfurOreTypes.get(i));
-        }
-        for(int i=1; i<=placableBlocks.size(); i++) {
-            plugin.getInteractables().add(placableBlocks.get(i));
-        }
-
+        interactables.add(Material.CRAFTING_TABLE);
+        interactables.add(Material.FURNACE);
     }
 
     //Ressources
@@ -167,14 +154,23 @@ public class ItemMaterials {
         return cookedSulfur;
     }
 
-    public ItemStack getScrap(int amount) {
-        ItemStack scrap = new ItemStack(Material.NETHERITE_SCRAP);
-        scrap.setAmount(amount);
-        ItemMeta scrapMeta = scrap.getItemMeta();
-        scrapMeta.setDisplayName("Scrap");
-        scrap.setItemMeta(scrapMeta);
+    public ItemStack getHumanSkull(int amount) {
+        ItemStack humanSkull = new ItemStack(Material.PLAYER_HEAD);
+        humanSkull.setAmount(amount);
+        ItemMeta humanSkullMeta = humanSkull.getItemMeta();
+        humanSkullMeta.setDisplayName("Human Skull");
+        humanSkull.setItemMeta(humanSkullMeta);
 
-        return scrap;
+        return humanSkull;
+    }
+    public ItemStack getWolfskull(int amount) {
+        ItemStack wolfSkull = new ItemStack(Material.CREEPER_HEAD);
+        wolfSkull.setAmount(amount);
+        ItemMeta wolfSkullMeta = wolfSkull.getItemMeta();
+        wolfSkullMeta.setDisplayName("Wolf Skull");
+        wolfSkull.setItemMeta(wolfSkullMeta);
+
+        return wolfSkull;
     }
 
     //Materialspawners
@@ -207,4 +203,7 @@ public class ItemMaterials {
 
     public ArrayList<Material> getPlacableBlocks() { return placableBlocks; }
     public void addPlacableBlocks(Material material) { placableBlocks.add(material); }
+
+    public ArrayList<Material> getInteractables() { return interactables; }
+    public void setInteractables(ArrayList<Material> interactables) { this.interactables = interactables; }
 }

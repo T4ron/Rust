@@ -11,6 +11,15 @@ public class ItemComponents {
 
     public ItemComponents() {}
 
+    public ItemStack getScrap(int amount) {
+        ItemStack scrap = new ItemStack(Material.NETHERITE_SCRAP);
+        scrap.setAmount(amount);
+        ItemMeta scrapMeta = scrap.getItemMeta();
+        scrapMeta.setDisplayName("Scrap");
+        scrap.setItemMeta(scrapMeta);
+
+        return scrap;
+    }
     public ItemStack getPipe(int amount) {
         ItemStack pipe = new ItemStack(Material.BAMBOO);
         pipe.setAmount(amount);

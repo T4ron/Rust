@@ -37,8 +37,6 @@ public class GiveMaterials implements CommandExecutor {
                         player.getInventory().addItem(plugin.getItemMaterials().getSulfurOre(1));
                     } else if(args[0].equalsIgnoreCase("cookedsulfur")) {
                         player.getInventory().addItem(plugin.getItemMaterials().getCookedSulfur(1));
-                    } else if(args[0].equalsIgnoreCase("scrap")) {
-                        player.getInventory().addItem(plugin.getItemMaterials().getScrap(1));
                     } else if(args[0].equalsIgnoreCase("all")) {
                         player.getInventory().addItem(plugin.getItemMaterials().getWoodLog(1));
                         player.getInventory().addItem(plugin.getItemMaterials().getCharcoal(1));
@@ -48,7 +46,6 @@ public class GiveMaterials implements CommandExecutor {
                         player.getInventory().addItem(plugin.getItemMaterials().getIronFrags(1));
                         player.getInventory().addItem(plugin.getItemMaterials().getSulfurOre(1));
                         player.getInventory().addItem(plugin.getItemMaterials().getCookedSulfur(1));
-                        player.getInventory().addItem(plugin.getItemMaterials().getScrap(1));
                     } else { player.sendMessage(plugin.PREFIX + "Dieser Befehl benötigt zusätzlich einen Ressourcen Typ oder all."); }
                 } else { player.sendMessage(plugin.PREFIX + "Dieser Befehl benötigt zusätzlich einen Ressourcen Typ oder all."); }
             } else { player.sendMessage(plugin.PREFIX + "Du hast keine Berechtigung diesen Befehl zu benutzen."); }
