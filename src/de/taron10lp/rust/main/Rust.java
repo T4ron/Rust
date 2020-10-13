@@ -66,7 +66,7 @@ public class Rust extends JavaPlugin {
         itemMaterials = new ItemMaterials(this);
         itemStacks = new ItemStacks();
         workStations = new WorkStations(this);
-        tools = new Tools();
+        tools = new Tools(this);
         inventorys = new Inventorys(this);
         itemComponents = new ItemComponents();
     }
