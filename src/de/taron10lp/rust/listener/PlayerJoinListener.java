@@ -20,7 +20,7 @@ public class PlayerJoinListener implements Listener {
 
         event.setJoinMessage(plugin.PREFIX + player.getDisplayName() + " ist gerade dem Server beigetreten");
 
-        player.getInventory().setItem(17, plugin.getItemMaterials().getInvCraftingPlaceHolder());
+        player.getInventory().setItem(17, plugin.getItemStacks().getInvCraftingPlaceHolder());
     }
 
 }

@@ -50,21 +50,21 @@ public class ItemMaterials {
         addPlacableBlocks(Material.CRAFTING_TABLE);
         addPlacableBlocks(Material.FURNACE);
 
-        for(int i=0; i<=woodLogTypes.size(); i++) {
+        for(int i=1; i<=woodLogTypes.size(); i++) {
             plugin.getInteractables().add(woodLogTypes.get(i));
         }
-        for(int i=0; i<=clothTypes.size(); i++) {
+        for(int i=1; i<=clothTypes.size(); i++) {
             plugin.getInteractables().add(clothTypes.get(i));
         }
-        for(int i=0; i<=stoneTypes.size(); i++) {
+        for(int i=1; i<=stoneTypes.size(); i++) {
             plugin.getInteractables().add(stoneTypes.get(i));
         }
-        for(int i=0; i<=ironOreTypes.size(); i++) {
+        for(int i=1; i<=ironOreTypes.size(); i++) {
             plugin.getInteractables().add(ironOreTypes.get(i));
-        }for(int i=0; i<=sulfurOreTypes.size(); i++) {
+        }for(int i=1; i<=sulfurOreTypes.size(); i++) {
             plugin.getInteractables().add(sulfurOreTypes.get(i));
         }
-        for(int i=0; i<=placableBlocks.size(); i++) {
+        for(int i=1; i<=placableBlocks.size(); i++) {
             plugin.getInteractables().add(placableBlocks.get(i));
         }
 
