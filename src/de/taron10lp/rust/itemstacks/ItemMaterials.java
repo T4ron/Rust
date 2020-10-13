@@ -167,16 +167,6 @@ public class ItemMaterials {
         return cookedSulfur;
     }
 
-    public ItemStack getScrap(int amount) {
-        ItemStack scrap = new ItemStack(Material.NETHERITE_SCRAP);
-        scrap.setAmount(amount);
-        ItemMeta scrapMeta = scrap.getItemMeta();
-        scrapMeta.setDisplayName("Scrap");
-        scrap.setItemMeta(scrapMeta);
-
-        return scrap;
-    }
-
     //Materialspawners
     public ItemStack getStoneSpawner() {
         ItemStack stoneSpawner = new ItemStack(Material.WHITE_WOOL);
