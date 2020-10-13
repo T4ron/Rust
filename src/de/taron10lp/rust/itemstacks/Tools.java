@@ -1,12 +1,19 @@
 package de.taron10lp.rust.itemstacks;
 
+import de.taron10lp.rust.main.Rust;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class Tools {
 
-    public Tools() {
+    private Rust plugin;
+
+    public Tools(Rust plugin) {
+        this.plugin = plugin;
+
+        plugin.getInteractables().add(getRock().getType());
+        plugin.getInteractables().add(getTorch().getType());
     }
 
     public ItemStack getRock() {

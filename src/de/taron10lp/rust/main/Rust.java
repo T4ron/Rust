@@ -12,7 +12,6 @@ import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,6 +29,7 @@ public class Rust extends JavaPlugin {
     private Tools tools;
     private Inventorys inventorys;
     private ItemComponents itemComponents;
+    private Rust plugin;
 
     //CustomConfigs
     private File gamblerConfigFile;
@@ -39,11 +39,11 @@ public class Rust extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        plugin = this;
+
         initialize(Bukkit.getPluginManager());
 
-        createGamblerConfig();
-        getConfig().set("ressources.respawntimer", 20*(60*5));
-        saveConfig();
+        plugin.saveDefaultConfig();
     }
 
     private void initialize(PluginManager pluginManager) {
@@ -66,7 +66,7 @@ public class Rust extends JavaPlugin {
         itemMaterials = new ItemMaterials(this);
         itemStacks = new ItemStacks();
         workStations = new WorkStations(this);
-        tools = new Tools();
+        tools = new Tools(this);
         inventorys = new Inventorys(this);
         itemComponents = new ItemComponents();
     }
