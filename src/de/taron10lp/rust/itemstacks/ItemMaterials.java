@@ -154,6 +154,7 @@ public class ItemMaterials {
         return cookedSulfur;
     }
 
+
     public ItemStack getHumanSkull(int amount) {
         ItemStack humanSkull = new ItemStack(Material.PLAYER_HEAD);
         humanSkull.setAmount(amount);
@@ -172,6 +173,7 @@ public class ItemMaterials {
 
         return wolfSkull;
     }
+
 
     //Materialspawners
     public ItemStack getStoneSpawner() {
