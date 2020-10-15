@@ -1,18 +1,13 @@
 package de.taron10lp.rust.main;
 
-import de.taron10lp.rust.commands.GiveMaterialSpawners;
-import de.taron10lp.rust.commands.GiveMaterials;
-import de.taron10lp.rust.commands.GiveTools;
-import de.taron10lp.rust.commands.GiveWorkStations;
+import de.taron10lp.rust.commands.*;
 import de.taron10lp.rust.itemstacks.*;
 import de.taron10lp.rust.listener.*;
 import de.taron10lp.rust.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -22,8 +17,10 @@ import java.util.ArrayList;
 
 public class Rust extends JavaPlugin {
 
-    public final String PREFIX = "§4[§6Rust§4]§7 ";
+    public final String PREFIX = "§4[§6Rust§4]§7 ",
+                        CONSOLE_PREFIX = "§econsole.";
 
+    //Classes
     private ItemMaterials itemMaterials;
     private ItemStacks itemStacks;
     private WorkStations workStations;
@@ -32,18 +29,16 @@ public class Rust extends JavaPlugin {
     private ItemComponents itemComponents;
 
     //CustomConfigs
-    private File gamblerConfigFile;
-    private FileConfiguration gamblerConfig;
+    private File gamblerConfigFile = new File("plugins/Rust", "gambler.yml");
+    private FileConfiguration gamblerConfig = YamlConfiguration.loadConfiguration(gamblerConfigFile);
 
-    public ArrayList<Material> interactables = new ArrayList<>();
+    //ArrayLists
+    public ArrayList<Material> interactableItems = new ArrayList<>();
 
     @Override
     public void onEnable() {
         initialize(Bukkit.getPluginManager());
-
-        createGamblerConfig();
-        getConfig().set("ressources.respawntimer", 20*(60*5));
-        saveConfig();
+        initializeConfigs();
     }
 
     private void initialize(PluginManager pluginManager) {
@@ -55,20 +50,29 @@ public class Rust extends JavaPlugin {
         pluginManager.registerEvents(new PlayerPickupItemListener(this), this);
         pluginManager.registerEvents(new BlockDropItemListener(this), this);
         pluginManager.registerEvents(new MobSpawnListener(this), this);
-        pluginManager.registerEvents(new PlayerSwapHandItemListener(this), this);
         pluginManager.registerEvents(new InventoryClickListener(this), this);
+        pluginManager.registerEvents(new PlayerDeathListener(this), this);
+        pluginManager.registerEvents(new PlayerRespawnListener(this), this);
 
         this.getCommand("givematerialspawner").setExecutor(new GiveMaterialSpawners(this));
         this.getCommand("givetools").setExecutor(new GiveTools(this));
         this.getCommand("givematerials").setExecutor(new GiveMaterials(this));
         this.getCommand("giveworkstations").setExecutor(new GiveWorkStations(this));
+        this.getCommand("console").setExecutor(new RustConsoleCommands(this));
 
         itemMaterials = new ItemMaterials(this);
         itemStacks = new ItemStacks();
         workStations = new WorkStations(this);
-        tools = new Tools();
+        tools = new Tools(this);
         inventorys = new Inventorys(this);
         itemComponents = new ItemComponents();
+    }
+
+    private void initializeConfigs() {
+        saveConfig();
+
+        createGamblerConfig();
+        saveGamblerConfig();
     }
 
     //Classes
@@ -97,23 +101,16 @@ public class Rust extends JavaPlugin {
     //Custom Configs
     public FileConfiguration getGamblerConfig() { return this.gamblerConfig; }
     private void createGamblerConfig() {
-        gamblerConfigFile = new File(getDataFolder(), "gambler.yml");
-        if(!(gamblerConfigFile.exists())) {
-            gamblerConfigFile.getParentFile().mkdirs();
-            saveResource("gambler.yml", false);
-        }
-
-        gamblerConfig = new YamlConfiguration();
-        try {
-            gamblerConfig.load(gamblerConfigFile);
-        } catch (IOException | InvalidConfigurationException exception) {
-            exception.printStackTrace();
-        }
+        if(!getDataFolder().exists())
+            getDataFolder().mkdirs();
+    }
+    public void saveGamblerConfig() {
+        try { gamblerConfig.save("gambler.yml"); } catch (IOException exception) { exception.printStackTrace(); }
     }
 
     //ArrayLists
-    public ArrayList<Material> getInteractables() { return interactables; }
-    public void addInteractable(Material material) {
-        interactables.add(material);
+    public ArrayList<Material> getInteractableItems() { return interactableItems; }
+    public void addInteractableItem(Material material) {
+        interactableItems.add(material);
     }
 }

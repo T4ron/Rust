@@ -17,34 +17,55 @@ public class PlayerInteractListener implements Listener {
     }
 
     @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent event) {
+    public void onPlayerInteractCraftingTable(PlayerInteractEvent event) {
         if(event.getPlayer() == null) {
             return;
         }
         Player player = event.getPlayer();
 
-        if(!(plugin.getInteractables().contains(event.getMaterial()))) {
-            event.setCancelled(true);
+        if(!(event.getAction().equals(Action.RIGHT_CLICK_BLOCK))) {
+            return;
+        }
+        if(!(event.getClickedBlock().getType().equals(Material.CRAFTING_TABLE))) {
+            return;
+        }
+        player.sendMessage("Interacting with Workbench Tier 1");
+    }
+
+    @EventHandler
+    public void onPlayerInteractGambler(PlayerInteractEvent event) {
+        if(event.getPlayer() == null) {
+            return;
+        }
+        Player player = event.getPlayer();
+
+        if(!(event.getAction().equals(Action.RIGHT_CLICK_BLOCK))) {
+            return;
+        }
+        if(!(event.getClickedBlock().getType().equals(Material.GRINDSTONE))) {
+            return;
+        }
+        player.openInventory(plugin.getInventorys().getGamblerInv());
+    }
+
+    @EventHandler
+    public void onPlayerUseItem(PlayerInteractEvent event) {
+        if(event.getPlayer() == null) {
+            return;
+        }
+        Player player = event.getPlayer();
+        if(player.isOp()) {
             return;
         }
 
-        if(event.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
-            switch(event.getClickedBlock().getType()) {
-                case GRINDSTONE:
-                    event.setCancelled(true);
-                    plugin.getInventorys().openGambleInv(player);
-                    break;
-                case CRAFTING_TABLE:
-                    event.setCancelled(true);
-                    player.sendMessage("Interacted");
-                    break;
-                default:
-                    event.setCancelled(true);
-                    break;
-            }
+        if(!(event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR)) {
+            return;
         }
-
-        event.setCancelled(true);
+        if(!(plugin.getInteractableItems().contains(event.getItem().getType()))) {
+            event.setCancelled(true);
+            return;
+        }
+        player.sendMessage("Interacted with: " + event.getItem().getType().toString());
     }
 
 }

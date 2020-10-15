@@ -4,25 +4,26 @@ import de.taron10lp.rust.main.Rust;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
-public class PlayerJoinListener implements Listener {
+public class PlayerRespawnListener implements Listener {
 
     private Rust plugin;
 
-    public PlayerJoinListener(Rust plugin) {
+    public PlayerRespawnListener(Rust plugin) {
         this.plugin = plugin;
     }
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
+    public void onPlayerRespawn(PlayerRespawnEvent event) {
+        if(event.getPlayer() == null) {
+            return;
+        }
         Player player = event.getPlayer();
 
-        event.setJoinMessage(plugin.PREFIX + player.getDisplayName() + " ist gerade dem Server beigetreten");
-
-        player.getInventory().setItem(17, plugin.getItemStacks().getInvCraftingPlaceHolder());
         player.getInventory().setItem(0, plugin.getTools().getRock());
         player.getInventory().setItem(1, plugin.getTools().getTorch());
+        player.getInventory().setItem(17, plugin.getItemStacks().getInvCraftingPlaceHolder());
     }
 
 }

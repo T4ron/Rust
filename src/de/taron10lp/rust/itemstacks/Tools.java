@@ -12,8 +12,8 @@ public class Tools {
     public Tools(Rust plugin) {
         this.plugin = plugin;
 
-        plugin.getInteractables().add(getRock().getType());
-        plugin.getInteractables().add(getTorch().getType());
+        plugin.getInteractableItems().add(getRock().getType());
+        plugin.getInteractableItems().add(getTorch().getType());
     }
 
     public ItemStack getRock() {
