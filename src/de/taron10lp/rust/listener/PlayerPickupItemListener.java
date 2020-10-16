@@ -46,6 +46,10 @@ public class PlayerPickupItemListener implements Listener {
                 event.getItem().remove();
             }
         }
+        if(itemStack.equals(plugin.getItemStacks().getInvCraftingPlaceHolder())) {
+            event.setCancelled(true);
+            event.getItem().remove();
+        }
 
     }
 }

@@ -27,7 +27,7 @@ public class GiveComponents implements CommandExecutor {
 
         if(player.isOp()) {
             Inventory componentsInv = Bukkit.createInventory(null, InventoryType.CHEST, "All Components");
-            for(int i=0; i<=plugin.getItemComponents().getAllItemComponents().size(); i++) {
+            for(int i=0; i<=plugin.getItemComponents().getAllItemComponents().size()-1; i++) {
                 componentsInv.setItem(i, plugin.getItemComponents().getAllItemComponents().get(i));
             }
             player.openInventory(componentsInv);

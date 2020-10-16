@@ -21,9 +21,13 @@ public class GiveMaterials implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
 
+        if(!(sender instanceof Player)) {
+            return true;
+        }
+
         if(player.isOp()) {
             Inventory materialInv = Bukkit.createInventory(null, InventoryType.CHEST, "All Materials");
-            for(int i=0; i<=plugin.getItemMaterials().getAllItemMaterials().size(); i++) {
+            for(int i=0; i<=plugin.getItemMaterials().getAllItemMaterials().size()-1; i++) {
                 materialInv.setItem(i, plugin.getItemMaterials().getAllItemMaterials().get(i));
             }
             player.openInventory(materialInv);

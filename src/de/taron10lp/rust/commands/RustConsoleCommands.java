@@ -18,6 +18,10 @@ public class RustConsoleCommands implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
 
+        if(!(sender instanceof Player)) {
+            return true;
+        }
+
         if(args.length == 1) {
             if(args[0].equalsIgnoreCase("kill")) {
                 player.setHealth(0);

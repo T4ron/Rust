@@ -33,6 +33,11 @@ public class ItemStacks {
 
         return slotBlock;
     }
+    public ItemStack getNothing() {
+        ItemStack nothing = new ItemStack(Material.AIR);
+
+        return nothing;
+    }
 
     //Gambler
     public ItemStack get1x() {

@@ -21,9 +21,13 @@ public class GiveWorkStations implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
 
+        if(!(sender instanceof Player)) {
+            return true;
+        }
+
         if(player.isOp()) {
             Inventory workStationInv = Bukkit.createInventory(null, InventoryType.CHEST, "All Workstations");
-            for(int i=0; i<=plugin.getWorkStations().getAllItemWorkStations().size(); i++) {
+            for(int i=0; i<=plugin.getWorkStations().getAllItemWorkStations().size()-1; i++) {
                 workStationInv.setItem(i, plugin.getWorkStations().getAllItemWorkStations().get(i));
             }
             player.openInventory(workStationInv);

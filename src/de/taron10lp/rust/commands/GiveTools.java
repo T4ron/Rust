@@ -21,9 +21,13 @@ public class GiveTools implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
 
+        if(!(sender instanceof Player)) {
+            return true;
+        }
+
         if(player.isOp()) {
             Inventory toolInv = Bukkit.createInventory(null, InventoryType.CHEST, "All Tools");
-            for(int i=0; i<=plugin.getTools().getAllItemTools().size(); i++) {
+            for(int i=0; i<=plugin.getTools().getAllItemTools().size()-1; i++) {
                 toolInv.setItem(i, plugin.getTools().getAllItemTools().get(i));
             }
             player.openInventory(toolInv);

@@ -29,6 +29,7 @@ public class PlayerInteractListener implements Listener {
         if(!(event.getClickedBlock().getType().equals(Material.CRAFTING_TABLE))) {
             return;
         }
+        event.setCancelled(true);
         player.sendMessage("Interacting with Workbench Tier 1");
     }
 
@@ -45,6 +46,7 @@ public class PlayerInteractListener implements Listener {
         if(!(event.getClickedBlock().getType().equals(Material.GRINDSTONE))) {
             return;
         }
+        event.setCancelled(true);
         player.openInventory(plugin.getInventorys().getGamblerInv());
     }
 
@@ -65,6 +67,7 @@ public class PlayerInteractListener implements Listener {
             event.setCancelled(true);
             return;
         }
+        event.setCancelled(true);
         player.sendMessage("Interacted with: " + event.getItem().getType().toString());
     }
 

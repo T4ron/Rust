@@ -18,6 +18,10 @@ public class GiveMaterialSpawners implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
 
+        if(!(sender instanceof Player)) {
+            return true;
+        }
+
         if(cmd.getName().equalsIgnoreCase("givematerialspawner")) {
             if (player.isOp()) {
                 if(args.length == 1) {
