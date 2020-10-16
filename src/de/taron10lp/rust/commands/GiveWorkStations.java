@@ -1,10 +1,13 @@
 package de.taron10lp.rust.commands;
 
 import de.taron10lp.rust.main.Rust;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.Inventory;
 
 public class GiveWorkStations implements CommandExecutor {
 
@@ -18,20 +21,12 @@ public class GiveWorkStations implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
 
-        if(cmd.getName().equalsIgnoreCase("giveworkstations")) {
-            if(player.isOp()) {
-                if(args.length == 1) {
-                    if(args[0].equalsIgnoreCase("workbanktier1")) {
-                        player.getInventory().addItem(plugin.getWorkStations().getworkbenchT1());
-                    } else if(args[0].equalsIgnoreCase("furnace")) {
-                        player.getInventory().addItem(plugin.getWorkStations().getFurnace());
-                    } else if(args[0].equalsIgnoreCase("gambler")) {
-                        player.getInventory().addItem(plugin.getWorkStations().getGambler());
-                    } else if(args[0].equalsIgnoreCase("recycler")) {
-                        player.getInventory().addItem(plugin.getWorkStations().getRecycler());
-                    } else { player.sendMessage(plugin.PREFIX + "Dieser Befehl benötigt zusätzlich einen Workstation Typ."); }
-                } else { player.sendMessage(plugin.PREFIX + "Dieser Befehl benötigt zusätzlich einen Workstation Typ."); }
-            } else { player.sendMessage(plugin.PREFIX + "Du hast keine Berechtigung diesen Befehl zu benutzen."); }
+        if(player.isOp()) {
+            Inventory workStationInv = Bukkit.createInventory(null, InventoryType.CHEST, "All Workstations");
+            for(int i=0; i<=plugin.getWorkStations().getAllItemWorkStations().size(); i++) {
+                workStationInv.setItem(i, plugin.getWorkStations().getAllItemWorkStations().get(i));
+            }
+            player.openInventory(workStationInv);
         }
 
         return false;

@@ -59,13 +59,14 @@ public class Rust extends JavaPlugin {
         this.getCommand("givematerials").setExecutor(new GiveMaterials(this));
         this.getCommand("giveworkstations").setExecutor(new GiveWorkStations(this));
         this.getCommand("console").setExecutor(new RustConsoleCommands(this));
+        this.getCommand("givecomponents").setExecutor(new GiveComponents(this));
 
         itemMaterials = new ItemMaterials(this);
         itemStacks = new ItemStacks();
         workStations = new WorkStations(this);
         tools = new Tools(this);
         inventorys = new Inventorys(this);
-        itemComponents = new ItemComponents();
+        itemComponents = new ItemComponents(this);
     }
 
     private void initializeConfigs() {

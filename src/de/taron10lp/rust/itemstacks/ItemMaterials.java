@@ -17,8 +17,8 @@ public class ItemMaterials {
     private ArrayList<Material> ironOreTypes = new ArrayList<>();
     private ArrayList<Material> sulfurOreTypes = new ArrayList<>();
     private ArrayList<Material> placableBlocks = new ArrayList<>();
-
     private ArrayList<Material> interactables;
+    private ArrayList<ItemStack> allItemMaterials = new ArrayList<>();
 
     public ItemMaterials(Rust plugin) {
         this.plugin = plugin;
@@ -52,6 +52,20 @@ public class ItemMaterials {
         //placable blocks
         addPlacableBlocks(Material.CRAFTING_TABLE);
         addPlacableBlocks(Material.FURNACE);
+
+        //allmaterials
+        addMaterialToArray(getWoodLog(1));
+        addMaterialToArray(getCharcoal(1));
+        addMaterialToArray(getCloth(1));
+        addMaterialToArray(getStone(1));
+        addMaterialToArray(getIronOre(1));
+        addMaterialToArray(getIronFrags(1));
+        addMaterialToArray(gethqmOre(1));
+        addMaterialToArray(gethqmIngot(1));
+        addMaterialToArray(getSulfurOre(1));
+        addMaterialToArray(getCookedSulfur(1));
+        addMaterialToArray(getHumanSkull(1));
+        addMaterialToArray(getWolfSkull(1));
     }
 
     //Ressources
@@ -73,7 +87,6 @@ public class ItemMaterials {
 
         return charcoal;
     }
-
     public ItemStack getCloth(int amount) {
         ItemStack fiber = new ItemStack(Material.PAPER);
         fiber.setAmount(amount);
@@ -83,7 +96,6 @@ public class ItemMaterials {
 
         return fiber;
     }
-
     public ItemStack getStone(int amount) {
         ItemStack stone = new ItemStack(Material.STONE);
         stone.setAmount(amount);
@@ -93,7 +105,6 @@ public class ItemMaterials {
 
         return stone;
     }
-
     public ItemStack getIronOre(int amount) {
         ItemStack ironOre = new ItemStack(Material.IRON_ORE);
         ironOre.setAmount(amount);
@@ -112,7 +123,6 @@ public class ItemMaterials {
 
         return ironFrags;
     }
-
     public ItemStack gethqmOre(int amount) {
         ItemStack hqmOre = new ItemStack(Material.ANCIENT_DEBRIS);
         hqmOre.setAmount(amount);
@@ -131,7 +141,6 @@ public class ItemMaterials {
 
         return hqmIngot;
     }
-
     public ItemStack getSulfurOre(int amount) {
         ItemStack sulfurOre = new ItemStack(Material.GOLD_ORE);
         sulfurOre.setAmount(amount);
@@ -150,8 +159,6 @@ public class ItemMaterials {
 
         return cookedSulfur;
     }
-
-
     public ItemStack getHumanSkull(int amount) {
         ItemStack humanSkull = new ItemStack(Material.PLAYER_HEAD);
         humanSkull.setAmount(amount);
@@ -161,7 +168,7 @@ public class ItemMaterials {
 
         return humanSkull;
     }
-    public ItemStack getWolfskull(int amount) {
+    public ItemStack getWolfSkull(int amount) {
         ItemStack wolfSkull = new ItemStack(Material.CREEPER_HEAD);
         wolfSkull.setAmount(amount);
         ItemMeta wolfSkullMeta = wolfSkull.getItemMeta();
@@ -205,4 +212,7 @@ public class ItemMaterials {
 
     public ArrayList<Material> getInteractables() { return interactables; }
     public void setInteractables(ArrayList<Material> interactables) { this.interactables = interactables; }
+
+    public ArrayList<ItemStack> getAllItemMaterials() { return allItemMaterials; }
+    public void addMaterialToArray(ItemStack itemStack) { allItemMaterials.add(itemStack); }
 }

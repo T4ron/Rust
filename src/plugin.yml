@@ -8,4 +8,5 @@ commands:
   givetools:
   givematerials:
   giveworkstations:
+  givecomponents:
   console:

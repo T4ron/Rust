@@ -5,15 +5,22 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+
 public class Tools {
 
     private Rust plugin;
+
+    private ArrayList<ItemStack> allItemTools = new ArrayList<>();
 
     public Tools(Rust plugin) {
         this.plugin = plugin;
 
         plugin.getInteractableItems().add(getRock().getType());
         plugin.getInteractableItems().add(getTorch().getType());
+
+        addToolToArray(getRock());
+        addToolToArray(getTorch());
     }
 
     public ItemStack getRock() {
@@ -24,7 +31,6 @@ public class Tools {
 
         return rock;
     }
-
     public ItemStack getTorch() {
         ItemStack torch = new ItemStack(Material.TORCH);
         ItemMeta torchMeta = torch.getItemMeta();
@@ -33,4 +39,9 @@ public class Tools {
 
         return torch;
     }
+
+    //ArrayLists
+
+    public ArrayList<ItemStack> getAllItemTools() { return allItemTools; }
+    public void addToolToArray(ItemStack itemStack) { allItemTools.add(itemStack); }
 }

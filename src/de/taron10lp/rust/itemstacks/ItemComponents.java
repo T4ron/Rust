@@ -6,12 +6,43 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+
 public class ItemComponents {
 
     private Rust plugin;
 
-    public ItemComponents() {}
+    private ArrayList<ItemStack> allItemComponents = new ArrayList<>();
 
+    public ItemComponents(Rust plugin) {
+        this.plugin = plugin;
+
+        addComponentToArray(getScrap(1));
+        addComponentToArray(getMetalPipe(1));
+        addComponentToArray(getSewingKit(1));
+        addComponentToArray(getGears(1));
+        addComponentToArray(getMetalBlade(1));
+        addComponentToArray(getMetalSpring(1));
+        addComponentToArray(getRope(1));
+        addComponentToArray(getRoadSigns(1));
+        addComponentToArray(getRifleBody(1));
+        addComponentToArray(getSemiAutoBody(1));
+        addComponentToArray(getTarp(1));
+        addComponentToArray(getTechTrash(1));
+        addComponentToArray(getEmptyPropaneTank(1));
+        addComponentToArray(getSheetMetal(1));
+        addComponentToArray(getElectricFuse(1));
+    }
+
+    public ItemStack getScrap(int amount) {
+        ItemStack scrap = new ItemStack(Material.NETHERITE_SCRAP);
+        scrap.setAmount(amount);
+        ItemMeta scrapMeta = scrap.getItemMeta();
+        scrapMeta.setDisplayName("Scrap");
+        scrap.setItemMeta(scrapMeta);
+
+        return scrap;
+    }
     public ItemStack getMetalPipe(int amount) {
         ItemStack metalPipe = new ItemStack(Material.BAMBOO);
         metalPipe.setAmount(amount);
@@ -139,4 +170,7 @@ public class ItemComponents {
         return electricFuse;
     }
 
+
+    public ArrayList<ItemStack> getAllItemComponents() { return allItemComponents; }
+    public void addComponentToArray(ItemStack itemStack) { allItemComponents.add(itemStack); }
 }

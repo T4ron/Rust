@@ -9,11 +9,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 
-public class GiveMaterials implements CommandExecutor {
+public class GiveComponents implements CommandExecutor {
 
     private Rust plugin;
 
-    public GiveMaterials(Rust plugin) {
+    public GiveComponents(Rust plugin) {
         this.plugin = plugin;
     }
 
@@ -21,12 +21,16 @@ public class GiveMaterials implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
 
+        if(!(sender instanceof Player)) {
+            return true;
+        }
+
         if(player.isOp()) {
-            Inventory materialInv = Bukkit.createInventory(null, InventoryType.CHEST, "All Materials");
-            for(int i=0; i<=plugin.getItemMaterials().getAllItemMaterials().size(); i++) {
-                materialInv.setItem(i, plugin.getItemMaterials().getAllItemMaterials().get(i));
+            Inventory componentsInv = Bukkit.createInventory(null, InventoryType.CHEST, "All Components");
+            for(int i=0; i<=plugin.getItemComponents().getAllItemComponents().size(); i++) {
+                componentsInv.setItem(i, plugin.getItemComponents().getAllItemComponents().get(i));
             }
-            player.openInventory(materialInv);
+            player.openInventory(componentsInv);
         }
 
         return false;
