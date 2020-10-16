@@ -5,9 +5,13 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+
 public class WorkStations {
 
     private Rust plugin;
+
+    private ArrayList<ItemStack> allItemWorkStations = new ArrayList<>();
 
     public WorkStations(Rust plugin) {
         this.plugin = plugin;
@@ -16,6 +20,11 @@ public class WorkStations {
         plugin.getInteractableItems().add(getFurnace().getType());
         plugin.getInteractableItems().add(getGambler().getType());
         plugin.getInteractableItems().add(getRecycler().getType());
+
+        addWorkStationToArray(getworkbenchT1());
+        addWorkStationToArray(getFurnace());
+        addWorkStationToArray(getGambler());
+        addWorkStationToArray(getRecycler());
     }
 
     public ItemStack getworkbenchT1() {
@@ -50,4 +59,7 @@ public class WorkStations {
 
         return recycler;
     }
+
+    public ArrayList<ItemStack> getAllItemWorkStations() { return allItemWorkStations; }
+    public void addWorkStationToArray(ItemStack itemStack) { allItemWorkStations.add(itemStack); }
 }

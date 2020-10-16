@@ -1,10 +1,13 @@
 package de.taron10lp.rust.commands;
 
 import de.taron10lp.rust.main.Rust;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.Inventory;
 
 public class GiveTools implements CommandExecutor {
 
@@ -18,22 +21,12 @@ public class GiveTools implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
 
-        if(cmd.getName().equalsIgnoreCase("givetools")) {
-            if(player.isOp()) {
-                if(args.length == 1) {
-                    if(args[0].equalsIgnoreCase("rock")) {
-                        player.getInventory().addItem(plugin.getTools().getRock());
-                    }else if(args[0].equalsIgnoreCase("torch")) {
-                        player.getInventory().addItem(plugin.getTools().getTorch());
-                    } else {
-                        player.sendMessage(plugin.PREFIX + "Dieser Befehl benötigt zusätzlich ein Tool.");
-                    }
-                } else {
-                    player.sendMessage(plugin.PREFIX + "Du musst ein Tool eingeben");
-                }
-            } else {
-                player.sendMessage(plugin.PREFIX + "Du hast keine Berechtigung diesen Befehl zu benutzen");
+        if(player.isOp()) {
+            Inventory toolInv = Bukkit.createInventory(null, InventoryType.CHEST, "All Tools");
+            for(int i=0; i<=plugin.getTools().getAllItemTools().size(); i++) {
+                toolInv.setItem(i, plugin.getTools().getAllItemTools().get(i));
             }
+            player.openInventory(toolInv);
         }
 
         return false;
