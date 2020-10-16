@@ -15,7 +15,7 @@ public class GiveTools implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String Label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
 
         if(cmd.getName().equalsIgnoreCase("givetools")) {

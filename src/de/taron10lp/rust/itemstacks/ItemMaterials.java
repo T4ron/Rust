@@ -22,7 +22,7 @@ public class ItemMaterials {
 
     public ItemMaterials(Rust plugin) {
         this.plugin = plugin;
-        interactables = plugin.getInteractables();
+        interactables = plugin.getInteractableItems();
 
         //wood log
         addWoodLogTypes(Material.OAK_LOG);
@@ -52,9 +52,6 @@ public class ItemMaterials {
         //placable blocks
         addPlacableBlocks(Material.CRAFTING_TABLE);
         addPlacableBlocks(Material.FURNACE);
-
-        interactables.add(Material.CRAFTING_TABLE);
-        interactables.add(Material.FURNACE);
     }
 
     //Ressources

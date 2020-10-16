@@ -12,10 +12,10 @@ public class WorkStations {
     public WorkStations(Rust plugin) {
         this.plugin = plugin;
 
-        plugin.getInteractables().add(getworkbenchT1().getType());
-        plugin.getInteractables().add(getFurnace().getType());
-        plugin.getInteractables().add(getGambler().getType());
-        plugin.getInteractables().add(getRecycler().getType());
+        plugin.getInteractableItems().add(getworkbenchT1().getType());
+        plugin.getInteractableItems().add(getFurnace().getType());
+        plugin.getInteractableItems().add(getGambler().getType());
+        plugin.getInteractableItems().add(getRecycler().getType());
     }
 
     public ItemStack getworkbenchT1() {
