@@ -177,7 +177,24 @@ public class ItemMaterials {
 
         return wolfSkull;
     }
+    public ItemStack getLowGradeFuel(int amount) {
+        ItemStack lowGradeFuel = new ItemStack(Material.CHEST.MILK_BUCKET);
+        lowGradeFuel.setAmount(amount);
+        ItemMeta lowGradeFuelMeta = lowGradeFuel.getItemMeta();
+        lowGradeFuelMeta.setDisplayName("Low Grade Fuel");
+        lowGradeFuel.setItemMeta(lowGradeFuelMeta);
 
+        return lowGradeFuel;
+    }
+    public ItemStack getCrudeOil(int amount) {
+        ItemStack crudeOil = new ItemStack(Material.LAVA_BUCKET);
+        crudeOil.setAmount(amount);
+        ItemMeta crudeOilMeta = crudeOil.getItemMeta();
+        crudeOilMeta.setDisplayName("Crude Oil");
+        crudeOil.setItemMeta(crudeOilMeta);
+
+        return crudeOil;
+    }
 
     //Materialspawners
     public ItemStack getStoneSpawner() {
