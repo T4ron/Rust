@@ -1,5 +1,9 @@
 package de.taron10lp.rust.main;
 
+import cratesandbarrels.BarrelManager;
+import cratesandbarrels.BlueBarrel;
+import cratesandbarrels.BrownBarrel;
+import cratesandbarrels.RedBarrel;
 import de.taron10lp.rust.commands.*;
 import de.taron10lp.rust.itemstacks.*;
 import de.taron10lp.rust.listener.*;
@@ -28,6 +32,13 @@ public class Rust extends JavaPlugin {
     private Tools tools;
     private Inventorys inventorys;
     private ItemComponents itemComponents;
+    private ItemBarrelsAndCrates itemBarrelsAndCrates;
+    private BarrelManager barrelManager;
+
+    //Barrels And Crates
+    private BlueBarrel blueBarrel;
+    private BrownBarrel brownBarrel;
+    private RedBarrel redBarrel;
 
     //CustomConfigs
     private File gamblerConfigFile = new File("plugins/Rust", "gambler.yml");
@@ -68,6 +79,12 @@ public class Rust extends JavaPlugin {
         tools = new Tools(this);
         inventorys = new Inventorys(this);
         itemComponents = new ItemComponents(this);
+        itemBarrelsAndCrates = new ItemBarrelsAndCrates(this);
+        barrelManager = new BarrelManager(this);
+
+        blueBarrel = new BlueBarrel(barrelManager, this);
+        brownBarrel = new BrownBarrel(barrelManager, this);
+        redBarrel = new RedBarrel(barrelManager, this);
     }
 
     private void initializeConfigs() {
@@ -81,24 +98,17 @@ public class Rust extends JavaPlugin {
     public ItemMaterials getItemMaterials() {
         return itemMaterials;
     }
-    public void setItemMaterials(ItemMaterials itemMaterials) {
-        this.itemMaterials = itemMaterials;
-    }
-
     public ItemStacks getItemStacks() { return itemStacks; }
-    public void setItemStacks(ItemStacks itemStacks) { this.itemStacks = itemStacks; }
-
     public WorkStations getWorkStations() { return workStations; }
-    public void setWorkStations(WorkStations workStations) { this.workStations = workStations; }
-
     public Tools getTools() { return tools; }
-    public void setTools(Tools tools) { this.tools = tools; }
-
     public Inventorys getInventorys() { return inventorys; }
-    public void setInventorys(Inventorys inventorys) { this.inventorys = inventorys; }
-
     public ItemComponents getItemComponents() { return itemComponents; }
-    public void setItemComponents(ItemComponents itemComponents) { this.itemComponents = itemComponents; }
+    public ItemBarrelsAndCrates getItemBarrelsAndCrates() { return itemBarrelsAndCrates; }
+
+    //Crates And Barrels
+    public BlueBarrel getBlueBarrel() { return blueBarrel; }
+    public BrownBarrel getBrownBarrel() { return brownBarrel; }
+    public RedBarrel getRedBarrel() { return redBarrel; }
 
     //Custom Configs
     public FileConfiguration getGamblerConfig() { return this.gamblerConfig; }

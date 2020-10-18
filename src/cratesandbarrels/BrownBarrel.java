@@ -1,10 +1,8 @@
 package cratesandbarrels;
 
 import de.taron10lp.rust.main.Rust;
-import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -16,7 +14,6 @@ public class BrownBarrel extends Barrel {
     private Rust plugin;
 
     private ArrayList<ItemStack> loot = new ArrayList<>();
-    private ArrayList<ItemStack> possibleLoot = new ArrayList<>();
 
     public BrownBarrel(BarrelManager barrelManager, Rust plugin) {
         this.barrelManager = barrelManager;
@@ -24,25 +21,26 @@ public class BrownBarrel extends Barrel {
     }
 
     @Override
-    public void open(Player player) {
+    public void dropLoot(Player player, Location location) {
         player.sendMessage("opening");
-        generateLoot(player);
+
+        for(int i=0; i<1;i++) {
+            location.getWorld().dropItem(location, getLoot().get(i));
+        }
     }
     @Override
     public void generateLoot(Player player) {
-        Inventory lootInv = Bukkit.createInventory(null, InventoryType.CHEST, "Loot");
-
-        lootInv.addItem(plugin.getItemComponents().getScrap(2));
+        loot.add(plugin.getItemComponents().getScrap(2));
 
         Random random = new Random();
         int amount;
         int chance = random.nextInt(100);
         if (chance < 16) { //16 percent chance
             amount = random.nextInt(2) + 1;
-            lootInv.addItem(plugin.getItemComponents().getRope(amount));
+            loot.add(plugin.getItemComponents().getRope(amount));
             return;
         } else if (chance < 15) {
-            lootInv.addItem(plugin.getItemComponents().getMetalBlade(1));
+            loot.add(plugin.getItemComponents().getMetalBlade(1));
             return;
         } else if (chance < 8) {
             ArrayList<org.bukkit.inventory.ItemStack> percent8Items = new ArrayList<>();
@@ -51,7 +49,7 @@ public class BrownBarrel extends Barrel {
             amount = random.nextInt(4) + 3;
             percent8Items.add(plugin.getItemComponents().getSewingKit(amount));
             int whichItem = random.nextInt(percent8Items.size()) + 1;
-            lootInv.addItem(percent8Items.get(whichItem));
+            loot.add(percent8Items.get(whichItem));
         } else if (chance < 1) {
             ArrayList<org.bukkit.inventory.ItemStack> percent1Items = new ArrayList<>();
             percent1Items.add(plugin.getItemComponents().getGears(2));
@@ -64,6 +62,13 @@ public class BrownBarrel extends Barrel {
             percent1Items.add(plugin.getItemComponents().getElectricFuse(1));
             percent1Items.add(plugin.getItemComponents().getMetalSpring(1));
             //More Items Later from: https://rustlabs.com/entity/barrel#order;sort=3,1,0
+
+            int whichItem = random.nextInt(percent1Items.size()) + 1;
+            loot.add(percent1Items.get(whichItem));
+            setLoot(loot);
         }
     }
+
+    public ArrayList<ItemStack> getLoot() { return loot; }
+    public void setLoot(ArrayList<ItemStack> loot) { this.loot = loot; }
 }

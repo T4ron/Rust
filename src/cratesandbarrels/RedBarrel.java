@@ -1,10 +1,8 @@
 package cratesandbarrels;
 
 import de.taron10lp.rust.main.Rust;
-import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -22,15 +20,17 @@ public class RedBarrel extends Barrel {
     }
 
     @Override
-    public void open(Player player) {
+    public void dropLoot(Player player, Location location) {
         player.sendMessage("opening");
-        generateLoot(player);
+
+        for(int i=0; i<1;i++) {
+            location.getWorld().dropItem(location, loot.get(i));
+        }
     }
     @Override
     public void generateLoot(Player player) {
-        Inventory lootInv = Bukkit.createInventory(null, InventoryType.CHEST, "Loot");
-        lootInv.addItem(plugin.getItemMaterials().getLowGradeFuel(5));
-        lootInv.addItem(plugin.getItemMaterials().getCrudeOil(15));
+        loot.add(plugin.getItemMaterials().getLowGradeFuel(5));
+        loot.add(plugin.getItemMaterials().getCrudeOil(15));
     }
 
 }
