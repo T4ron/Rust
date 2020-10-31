@@ -116,20 +116,23 @@ public class PlayerBreakBlockListener implements Listener {
 
         for(Material material : plugin.getItemBarrelsAndCrates().getBarrelMaterials()) {
             if(event.getBlock().getType().equals(material)) {
+                Random random = new Random();
+                int chance = random.nextInt(100);
+
                 if(material.equals(Material.LOOM)) {
-                    if (event.getBlock().getLocation().subtract(0, 1, 0).getBlock().getType() == Material.LOOM) {
+                    if (event.getBlock().getLocation().add(0, 1, 0).getBlock().getType() == Material.LOOM) {
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
-                        plugin.getBrownBarrel().dropLoot(player, event.getBlock().getLocation());
+                        plugin.getBrownBarrel().generateLoot(player, event.getBlock().getLocation(), chance);
                         event.getBlock().getLocation().add(0, 1, 0).getBlock().setType(Material.AIR);
                         return;
-                    } else if (event.getBlock().getLocation().add(0, 1, 0).getBlock().getType() == Material.LOOM) {
+                    } else if (event.getBlock().getLocation().subtract(0, 1, 0).getBlock().getType() == Material.LOOM) {
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
-                        plugin.getBrownBarrel().dropLoot(player, event.getBlock().getLocation());
+                        plugin.getBrownBarrel().generateLoot(player, event.getBlock().getLocation(), chance);
                         event.getBlock().getLocation().subtract(0, 1, 0).getBlock().setType(Material.AIR);
                         return;
-                    }
+                    } else { event.setCancelled(true); }
                 }
             }
         }

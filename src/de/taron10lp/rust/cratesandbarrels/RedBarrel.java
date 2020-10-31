@@ -1,4 +1,4 @@
-package cratesandbarrels;
+package de.taron10lp.rust.cratesandbarrels;
 
 import de.taron10lp.rust.main.Rust;
 import org.bukkit.Location;
@@ -20,17 +20,15 @@ public class RedBarrel extends Barrel {
     }
 
     @Override
-    public void dropLoot(Player player, Location location) {
+    public void generateLoot(Player player, Location location, int chance) {
+        loot.add(plugin.getItemMaterials().getLowGradeFuel(5));
+        loot.add(plugin.getItemMaterials().getCrudeOil(15));
+
         player.sendMessage("opening");
 
         for(int i=0; i<1;i++) {
             location.getWorld().dropItem(location, loot.get(i));
         }
-    }
-    @Override
-    public void generateLoot(Player player) {
-        loot.add(plugin.getItemMaterials().getLowGradeFuel(5));
-        loot.add(plugin.getItemMaterials().getCrudeOil(15));
     }
 
 }

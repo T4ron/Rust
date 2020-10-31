@@ -1,4 +1,4 @@
-package cratesandbarrels;
+package de.taron10lp.rust.cratesandbarrels;
 
 import de.taron10lp.rust.main.Rust;
 

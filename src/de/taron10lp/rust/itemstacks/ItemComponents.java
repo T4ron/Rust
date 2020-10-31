@@ -1,7 +1,6 @@
 package de.taron10lp.rust.itemstacks;
 
 import de.taron10lp.rust.main.Rust;
-import net.minecraft.server.v1_16_R1.Items;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -71,7 +70,7 @@ public class ItemComponents {
         return gears;
     }
     public ItemStack getMetalBlade(int amount) {
-        ItemStack metalBlade = new ItemStack(Material.MUSIC_DISC_MALL);
+        ItemStack metalBlade = new ItemStack(Material.STONE_PRESSURE_PLATE);
         metalBlade.setAmount(amount);
         ItemMeta metalBladeMeta = metalBlade.getItemMeta();
         metalBladeMeta.setDisplayName("Metal Blade");

@@ -1,8 +1,7 @@
-package cratesandbarrels;
+package de.taron10lp.rust.cratesandbarrels;
 
 import de.taron10lp.rust.main.Rust;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -22,22 +21,11 @@ public class BlueBarrel extends Barrel {
     }
 
     @Override
-    public void dropLoot(Player player, Location location) {
-        player.sendMessage("opening");
-
-        World world = player.getWorld();
-
-        for(int i=0; i<1;i++) {
-            location.getWorld().dropItem(location, loot.get(i));
-        }
-    }
-    @Override
-    public void generateLoot(Player player) {
+    public void generateLoot(Player player, Location location, int chance) {
         loot.add(plugin.getItemComponents().getScrap(2));
 
         Random random = new Random();
         int amount;
-        int chance = random.nextInt(100);
         if (chance < 16) { //16 percent chance
             amount = random.nextInt(2) + 1;
             loot.add(plugin.getItemComponents().getRope(amount));
@@ -68,6 +56,11 @@ public class BlueBarrel extends Barrel {
 
             int whichItem = random.nextInt(percent1Items.size()) + 1;
             loot.add(percent1Items.get(whichItem));
+
+            player.sendMessage("opening");
+            for(int i=0; i<1;i++) {
+                location.getWorld().dropItem(location, loot.get(i));
+            }
         }
     }
 }

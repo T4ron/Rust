@@ -1,9 +1,9 @@
 package de.taron10lp.rust.main;
 
-import cratesandbarrels.BarrelManager;
-import cratesandbarrels.BlueBarrel;
-import cratesandbarrels.BrownBarrel;
-import cratesandbarrels.RedBarrel;
+import de.taron10lp.rust.cratesandbarrels.BarrelManager;
+import de.taron10lp.rust.cratesandbarrels.BlueBarrel;
+import de.taron10lp.rust.cratesandbarrels.BrownBarrel;
+import de.taron10lp.rust.cratesandbarrels.RedBarrel;
 import de.taron10lp.rust.commands.*;
 import de.taron10lp.rust.itemstacks.*;
 import de.taron10lp.rust.listener.*;
@@ -12,7 +12,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
